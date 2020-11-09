@@ -23,9 +23,9 @@ body {
 // ↓SP以外の幅
 @media #{$media-notsp} {
   .wrap {
-    margin: 0 auto;
     padding-right: 1rem;
     padding-left: 1rem;
+    margin: 0 auto;
   }
 }
 // ↑SP以外の幅

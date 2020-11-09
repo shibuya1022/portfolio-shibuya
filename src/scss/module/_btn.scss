@@ -1,19 +1,19 @@
 .md-btn {
   $mb_btn_anime: 0.5s;
-  display: inline-flex;
   position: relative;
   z-index: 1;
+  display: inline-flex;
   align-items: center; //中段に揃える
   justify-content: center; //水平上の中央に寄せる
-  padding: 1em;
-  border: 0;
   width: 100%;
+  padding: 1em;
   overflow: hidden;
   line-height: 1;
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
   cursor: pointer;
+  border: 0;
   transition-duration: $mb_btn_anime;
   // テキストを左端に寄せる
   &.left-text {
@@ -39,14 +39,14 @@
     input[type="submit"],
     button {
       display: inline-block;
-      padding: 1em;
-      border: 0;
       width: 100%;
+      padding: 1em;
       font-size: inherit;
       font-weight: inherit;
       line-height: 1;
       color: inherit;
       background: transparent;
+      border: 0;
       outline: none;
       transition: color 0s;
     }
@@ -54,10 +54,10 @@
 
   // スライドアニメ演出用要素
   &::before {
-    display: inline-block;
     position: absolute;
     top: 0;
     z-index: -1;
+    display: inline-block;
     width: 100%;
     height: 100%;
     content: "";
@@ -139,9 +139,9 @@
   &.white {
     $btncolor: #fff;
     $textcolor: #000;
-    border: solid 1px $btncolor;
     color: $textcolor;
     background-color: $btncolor;
+    border: solid 1px $btncolor;
     &:before,
     &:hover,
     a:hover & {
@@ -152,9 +152,9 @@
   &.black {
     $btncolor: #000;
     $textcolor: #fff;
-    border: solid 1px $btncolor;
     color: $textcolor;
     background-color: $btncolor;
+    border: solid 1px $btncolor;
 
     &:before,
     &:hover,
@@ -167,8 +167,8 @@
   &.w-line {
     $btncolor: #fff;
     $textcolor: #fff;
-    border: solid 1px $btncolor;
     color: $textcolor;
+    border: solid 1px $btncolor;
 
     &:before,
     &:hover,
@@ -181,8 +181,8 @@
   &.b-line {
     $btncolor: #000;
     $textcolor: #000;
-    border: solid 1px $btncolor;
     color: $textcolor;
+    border: solid 1px $btncolor;
 
     &:before,
     &:hover,

@@ -70,8 +70,8 @@
 //吹き出し矢印（一変の幅,配置）
 @mixin BalloonArrow($size: 2rem, $pos: "bottom") {
   $move: -1 * ($size / 2);
-  display: block;
   position: absolute;
+  display: block;
   width: $size;
   height: $size;
   content: "";
@@ -104,22 +104,22 @@
 */
 //  @include delta(50px,25px,25px,#FFF,'bottom');  //三角形　（高さ,左側長さ,右側長さ,色,向き）
 @mixin delta($height, $left, $right, $color, $pos: "bottom") {
-  border-style: solid;
   //三角形　（高さ,左側長さ,右側長さ,色,向き）
   width: 0;
   height: 0;
+  border-style: solid;
   @if $pos == "bottom" {
-    border-width: $height $right 0 $left;
     border-color: $color transparent transparent;
+    border-width: $height $right 0 $left;
   } @else if $pos == "top" {
-    border-width: 0 $height $right $left;
     border-color: transparent transparent $color;
+    border-width: 0 $height $right $left;
   } @else if $pos == "left" {
-    border-width: $right $height $left 0;
     border-color: transparent $color transparent transparent;
+    border-width: $right $height $left 0;
   } @else if $pos == "right" {
-    border-width: $left 0 $right $height;
     border-color: transparent transparent transparent $color;
+    border-width: $left 0 $right $height;
   }
   @content;
 }
@@ -133,16 +133,16 @@
 */
 //  @include arrow(50px,1px,25px,25px,#FFF,'bottom');  //矢印　（長さ,太さ,左側長さ,右側長さ,色,向き）
 @mixin arrow($length, $weight, $left, $right, $color, $pos: "top") {
-  display: inline-block;
   position: relative;
   z-index: 1;
+  display: inline-block;
   background: $color;
   //共通設定
   &:before,
   &:after {
-    display: inline-block;
     position: absolute;
     z-index: 2;
+    display: inline-block;
     content: "";
     background: $color;
   }

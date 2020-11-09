@@ -68,8 +68,8 @@ $headerSP: 6rem;
 // プルダウンメニュー
 .pulldown {
   &__head {
-    padding: 1rem 2.5rem;
     height: $headerPC;
+    padding: 1rem 2.5rem;
     font-weight: 500;
     line-height: 1;
     color: #fff;
@@ -81,8 +81,8 @@ $headerSP: 6rem;
     top: 100%;
     left: 0;
     z-index: 2;
-    padding: 3.5rem 0;
     width: 100%;
+    padding: 3.5rem 0;
     background: #f00;
     opacity: 0;
     transition-duration: 0.5s;
@@ -137,10 +137,10 @@ $headerSP: 6rem;
   }
   &__item {
     padding: 1.5rem;
-    border-bottom: 1px solid #f00;
     font-weight: 500;
     color: #fff;
     background: #00f;
+    border-bottom: 1px solid #f00;
     &--sub {
       background: #00ffff;
     }
@@ -199,8 +199,8 @@ $headerSP: 6rem;
   $barOffBG: #fff; //バーの背景OFF時
   $barOnBG: #fff; //バーの背景ON時
   $time: 0.5s; //アニメ時間　0.1s以上
-  display: inline-block;
   position: relative;
+  display: inline-block;
   width: $btnSize;
   height: $btnSize;
   vertical-align: middle;
@@ -215,14 +215,14 @@ $headerSP: 6rem;
     height: 100%;
   }
   &__bar {
-    display: block;
     position: absolute;
     left: $posX;
     z-index: 2;
-    border-radius: $barRadius;
+    display: block;
     width: calc(100% - #{$posX} * 2);
     height: $bar;
     background: $barOffBG;
+    border-radius: $barRadius;
     transition-duration: $time;
     transform-origin: 50% 50%;
     &:nth-of-type(1) {

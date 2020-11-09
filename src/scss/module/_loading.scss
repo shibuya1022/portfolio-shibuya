@@ -18,13 +18,13 @@
   }
   &::before {
     display: block;
+    width: $size;
+    height: $size;
     margin: 0 auto;
+    content: "";
     border: $lineSize solid $colorA;
     border-bottom-color: $colorB;
     border-radius: 50%;
-    width: $size;
-    height: $size;
-    content: "";
     animation-name: loop; //アニメーション名
     animation-duration: $time; //1ループの時間
     animation-timing-function: linear; //アニメーションタイプ

@@ -19,9 +19,9 @@
   // 波紋エフェクト型
   // 画面幅の長辺×1.5の半径を持つ真円にする
   &--ripple {
-    border-radius: 50%;
     width: 300vh;
     height: 300vh;
+    border-radius: 50%;
     transform: translate(50%, -50%); // positionの座標を円の中心にする
     // ↓横長
     @media #{$media-land} {

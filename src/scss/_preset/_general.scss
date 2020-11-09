@@ -35,8 +35,8 @@ ol,ulをデフォルトに近い装飾に戻す。
 .u-list,
 .o-list {
   > li {
-    margin: 0 0 0 2%;
     width: 98%;
+    margin: 0 0 0 2%;
   }
 }
 
@@ -467,8 +467,8 @@ Bootstrap等で見かける案。
 */
 .youtube-wrap {
   position: relative;
-  padding-top: 56.25%;
   width: 100%;
+  padding-top: 56.25%;
 
   iframe {
     position: absolute;

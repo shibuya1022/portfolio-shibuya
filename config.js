@@ -1,7 +1,7 @@
 // 全体設定ファイル
 // 必須設定項目
-const pathDest = './Template/' // destパス（テーマ名） .gitignoreにも要記入
-const bsProxy = 'http://template.lo/' // ローカル環境のURL　静的サイトなら空欄
+const pathDest = './mako-style/' // destパス（テーマ名） .gitignoreにも要記入
+const bsProxy = 'http://portfolio.lo/' // ローカル環境のURL　静的サイトなら空欄
 
 // 任意設定項目
 const pathSrc = './src/' // srcパス
