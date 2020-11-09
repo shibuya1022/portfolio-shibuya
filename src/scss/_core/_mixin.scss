@@ -1,0 +1,296 @@
+/*
+ ########     ###     ######  ######## ########  #######  ##    ## ########
+ ##     ##  ##   ##  ##       ##       ##       ##     ## ####  ##    ##
+ ########  ##     ##  ######  ######   ######   ##     ## ## ## ##    ##
+ ##     ## #########       ## ##       ##       ##     ## ##  ####    ##
+ ########  ##     ##  ######  ######## ##        #######  ##    ##    ##
+*/
+//基本のフォント設定
+//@include basefont{}
+@mixin basefont {
+  body,
+  button,
+  input,
+  select,
+  textarea {
+    @content;
+  }
+}
+/*
+ ##      ## ######## ########  ########  #######  ##    ## ########
+ ##  ##  ## ##       ##     ## ##       ##     ## ####  ##    ##
+ ##  ##  ## ######   ########  ######   ##     ## ## ## ##    ##
+ ##  ##  ## ##       ##     ## ##       ##     ## ##  ####    ##
+  ###  ###  ######## ########  ##        #######  ##    ##    ##
+*/
+// Webフォント宣言
+@mixin webFont($fontName: null, $class: null, $type: "sans-serif") {
+  body #{$class},
+  button#{$class},
+  input#{$class},
+  select#{$class},
+  textarea#{$class} {
+    @if $type == "serif" {
+      font-family: $fontName, $serif;
+    } @else {
+      font-family: $fontName, $sans_serif;
+    }
+  }
+}
+/*
+ ########          ##     ##  #######  ##       ########  ######## ########
+ ##     ##         ##     ## ##     ## ##       ##     ## ##       ##     ##
+ ########  ####### ######### ##     ## ##       ##     ## ######   ########
+ ##                ##     ## ##     ## ##       ##     ## ##       ##   ##
+ ##                ##     ##  #######  ######## ########  ######## ##     ##
+*/
+//プレースホルダーのスタイル設定
+//@include placeholder{}
+@mixin placeholder {
+  form {
+    ::-webkit-input-placeholder,
+    :-ms-input-placeholder {
+      @content;
+    }
+    :-moz-placeholder,
+    ::-moz-placeholder {
+      opacity: 1;
+      @content;
+    }
+  }
+}
+
+/*
+ ########             ###    ########  ########   #######  ##      ##
+ ##     ##          ##   ##  ##     ## ##     ## ##     ## ##  ##  ##
+ ########  ####### ##     ## ########  ########  ##     ## ##  ##  ##
+ ##     ##         ######### ##   ##   ##   ##   ##     ## ##  ##  ##
+ ########          ##     ## ##     ## ##     ##  #######   ###  ###
+*/
+//吹き出し矢印（一変の幅,配置）
+@mixin BalloonArrow($size: 2rem, $pos: "bottom") {
+  $move: -1 * ($size / 2);
+  display: block;
+  position: absolute;
+  width: $size;
+  height: $size;
+  content: "";
+  transform: rotate(45deg);
+  @if $pos == "bottom" {
+    bottom: $move;
+    left: 50%;
+    margin-left: $move;
+  } @else if $pos == "top" {
+    top: $move;
+    left: 50%;
+    margin-left: $move;
+  } @else if $pos == "left" {
+    top: 50%;
+    left: $move;
+    margin-top: $move;
+  } @else if $pos == "right" {
+    top: 50%;
+    right: $move;
+    margin-top: $move;
+  }
+  @content;
+}
+/*
+ ########  ######## ##       ########    ###
+ ##     ## ##       ##          ##     ##   ##
+ ##     ## ######   ##          ##    ##     ##
+ ##     ## ##       ##          ##    #########
+ ########  ######## ########    ##    ##     ##
+*/
+//  @include delta(50px,25px,25px,#FFF,'bottom');  //三角形　（高さ,左側長さ,右側長さ,色,向き）
+@mixin delta($height, $left, $right, $color, $pos: "bottom") {
+  border-style: solid;
+  //三角形　（高さ,左側長さ,右側長さ,色,向き）
+  width: 0;
+  height: 0;
+  @if $pos == "bottom" {
+    border-width: $height $right 0 $left;
+    border-color: $color transparent transparent;
+  } @else if $pos == "top" {
+    border-width: 0 $height $right $left;
+    border-color: transparent transparent $color;
+  } @else if $pos == "left" {
+    border-width: $right $height $left 0;
+    border-color: transparent $color transparent transparent;
+  } @else if $pos == "right" {
+    border-width: $left 0 $right $height;
+    border-color: transparent transparent transparent $color;
+  }
+  @content;
+}
+
+/*
+    ###    ########  ########   #######  ##      ##
+  ##   ##  ##     ## ##     ## ##     ## ##  ##  ##
+ ##     ## ########  ########  ##     ## ##  ##  ##
+ ######### ##   ##   ##   ##   ##     ## ##  ##  ##
+ ##     ## ##     ## ##     ##  #######   ###  ###
+*/
+//  @include arrow(50px,1px,25px,25px,#FFF,'bottom');  //矢印　（長さ,太さ,左側長さ,右側長さ,色,向き）
+@mixin arrow($length, $weight, $left, $right, $color, $pos: "top") {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  background: $color;
+  //共通設定
+  &:before,
+  &:after {
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
+    content: "";
+    background: $color;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+  //縦横分岐
+  @if $pos == "top" or $pos == "bottom" {
+    //縦矢印
+    width: $weight;
+    height: $length;
+    &:before,
+    &:after {
+      width: $weight;
+    }
+    &:before {
+      height: $left;
+    }
+    &:after {
+      height: $right;
+    }
+  } @else {
+    //横矢印
+    width: $length;
+    height: $weight;
+    &:before,
+    &:after {
+      height: $weight;
+    }
+    &:before {
+      width: $left;
+    }
+    &:after {
+      width: $right;
+    }
+  }
+  //方向分岐
+  @if $pos == "bottom" {
+    &:before,
+    &:after {
+      bottom: 0;
+    }
+    &:before {
+      right: 0;
+      transform-origin: 50% 100%;
+    }
+    &:after {
+      left: 0;
+      transform-origin: 50% 100%;
+    }
+  } @else if $pos == "left" {
+    &:before,
+    &:after {
+      left: 0;
+    }
+    &:before {
+      top: 0;
+      transform-origin: 0 50%;
+    }
+    &:after {
+      bottom: 0;
+      transform-origin: 0 50%;
+    }
+  } @else if $pos == "top" {
+    &:before,
+    &:after {
+      top: 0;
+    }
+    &:before {
+      left: 0;
+      transform-origin: 50% 0;
+    }
+    &:after {
+      right: 0;
+      transform-origin: 50% 0;
+    }
+  } @else if $pos == "right" {
+    &:before,
+    &:after {
+      right: 0;
+    }
+    &:before {
+      bottom: 0;
+      transform-origin: 100% 50%;
+    }
+    &:after {
+      top: 0;
+      transform-origin: 100% 50%;
+    }
+  }
+  @content;
+}
+
+/*
+ ##      ##    ###    ##     ## ########
+ ##  ##  ##  ##   ##  ##     ## ##
+ ##  ##  ## ##     ## ##     ## ######
+ ##  ##  ## #########  ##   ##  ##
+  ###  ###  ##     ##    ###    ########
+*/
+@mixin wave($delay, $step: 5, $base-delay: 0, $type: "transition") {
+  $delay: $delay * 1s;
+  $base-delay: $base-delay * 1s;
+  @for $i from 1 through $step {
+    &.wave#{$i} {
+      #{$type}-delay: $delay * ($i - 1) + $base-delay; //開始時間
+    }
+  }
+}
+
+/*
+ ##                ######  ##     ##    ###    ########   #######  ##      ##
+ ##               ##       ##     ##  ##   ##  ##     ## ##     ## ##  ##  ##
+ ##       #######  ######  ######### ##     ## ##     ## ##     ## ##  ##  ##
+ ##                     ## ##     ## ######### ##     ## ##     ## ##  ##  ##
+ ########          ######  ##     ## ##     ## ########   #######   ###  ###
+*/
+//@include longShadow(rgba(#000,.2),100);  //ロングシャドウをかける
+@mixin longShadow($color: rgba(#000, 0.2), $length: 100) {
+  overflow: hidden;
+  text-shadow: make-long-shadow($color, $length);
+}
+@function make-long-shadow($shadowColor, $length) {
+  $val: 0 0 $shadowColor;
+  @for $i from 1 through $length {
+    $val: #{$val}, #{$i}px #{$i}px #{$shadowColor};
+  }
+  @return $val;
+}
+
+/*
+
+ ########   ######          ##      ## ########     ###    ########
+ ##     ## ##               ##  ##  ## ##     ##  ##   ##  ##     ##
+ ########  ##       ####### ##  ##  ## ########  ##     ## ########
+ ##        ##               ##  ##  ## ##   ##   ######### ##
+ ##         ######           ###  ###  ##     ## ##     ## ##
+
+*/
+// PC用のラップサイズクラスを生成する
+// > @include pcWrapSize(1200); // PC用ラップサイズ .wrap.w○○○ を生成
+@mixin pcWrapSize($size: 1200) {
+  @media #{$media-notsp} {
+    .wrap.w#{$size} {
+      max-width: ($size * 1rem) / 10 + 2rem;
+    }
+  }
+}

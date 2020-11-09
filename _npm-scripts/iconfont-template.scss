@@ -1,0 +1,52 @@
+/*
+#overview
+SVGアイコンフォント
+
+「img/icon」ディレクトリ内のSVGファイルを元に生成されたアイコンフォント。
+タスクランナーの処理で自動的にフォントファイル+SCSSの生成と本ガイドへの記載が行われる。
+「i.icon-ファイル名」または「.iconfont（タグ内にファイル名と同じ文字列を入れる）」で呼び出すことができる（後者はIE非対応）。
+サンプルコードではCSS追記のフック用に「.icon」クラスも付けている。
+*/
+
+@font-face {
+  font-family: {{fontName}};
+  src: {{{src}}};
+  font-display: swap;
+}
+
+.iconfont {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: {{fontName}} !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-decoration: none;
+  text-transform: none;
+}
+i[class*="icon-"] {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+	&::before {
+    @extend .iconfont;
+    display: inline-block;
+    vertical-align: bottom;
+	}
+}
+{{#each codepoints}}
+/*
+#styleguide
+.icon-{{@key}}
+```
+<i class="icon-{{@key}}"></i>
+<i class="icon-{{@key}}" style="margin-left:2rem;font-size:2rem"></i>
+<i class="icon-{{@key}}" style="margin-left:2rem;font-size:5rem"></i>
+<span class="iconfont" style="display: inline-block;line-height: 1;vertical-align: middle;margin-left:2rem;font-size:10rem">{{@key}}</span>
+```
+*/
+$icon-{{@key}}: "\\{{this}}";
+.icon-{{@key}}::before {
+  content: "\\{{this}}";
+}
+{{/each}}

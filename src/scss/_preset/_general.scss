@@ -1,0 +1,514 @@
+/*
+#overview
+General
+
+やや込み入った挙動を取るが、特に調整せず汎用的に使えるクラス。
+*/
+
+/*
+ ##       ####  ######  ########
+ ##        ##  ##          ##
+ ##        ##   ######     ##
+ ##        ##        ##    ##
+ ######## ####  ######     ##
+*/
+/*
+#styleguide
+プレーンリスト　ol.o-list ul.u-list
+
+ol,ulをデフォルトに近い装飾に戻す。
+
+```
+<ul class="u-list">
+  <li>u-list</li>
+  <li>テキストテキストテキストテキスト</li>
+  <li>テキストテキストテキスト<br>テキストテキストテキスト</li>
+</ul>
+<ol class="o-list">
+  <li>o-list</li>
+  <li>テキストテキストテキストテキスト</li>
+  <li>テキストテキストテキスト<br>テキストテキストテキスト</li>
+</ol>
+```
+*/
+
+.u-list,
+.o-list {
+  > li {
+    margin: 0 0 0 2%;
+    width: 98%;
+  }
+}
+
+.u-list {
+  > li {
+    list-style-type: disc;
+  }
+}
+
+.o-list {
+  > li {
+    list-style-type: decimal;
+  }
+}
+/*
+#styleguide
+Flex　.flex
+
+対象をFlexにする。FlexもしくはFlexアイテム化に向かない要素（img等）を除き、何にでも使える。
+
+以下のオプションクラスを重ねがけすることでほとんどの設定を押さえられる。
+.flex含め、すべてのクラスは「.pc-」「.sp-」で対象デバイスを限定できる。
+　
+.bet  アイテムを均等に並べる（space-between）。両端にスペースは作らない。非常に使う
+.aro  アイテムを均等に並べる（space-around）。両端にもスペースを作る。あまり使わない
+.max  直下のアイテムを均等な幅に補正し、隙間なく並べる。PCのグローバルナビ等で使える
+　
+※3カラム、4カラムのspace-betweenとspace-aroundにて、数が半端だとラストが崩れる現象は以下の記述で抑止できる。
+アイテムと同じ幅の疑似要素で補うため、CSS側で以下のようにアイテムと同じwidthを指定する必要がある。
+::after {
+  content: "";
+  display: block;
+  width: アイテムと同じ幅
+}
+4カラムの場合はこちらも追記。
+::before {
+  order: 1;
+  content: "";
+  display: block;
+  width: アイテムと同じ幅
+}
+　
+.vstart,.vcenter,.vend  縦の位置を定義（Vertical）。startは初期値なのでpcsp用
+.hstart,.hcenter,.hend  横の位置を定義（Horizontal）。startは初期値なのでpcsp用
+.str  高さを統一する。初期値なのでpcsp用
+　
+.break  幅が足りない場合折り返す。
+　
+.vert  縦並びにする。高さが可変の親要素の中で、一定の位置関係を保ちたいときに使う。単に横並びを解除したいだけならpc-flex等でFlex自体を切る
+　
+.pc-1,.pc-2,.pc-3 .sp-1,.sp-2,.sp-3  アイテム側に付けるクラス。指定デバイス幅の際、並び順を指定通りに変更する（3番まで）
+　
+Flexはオプションが多く、またベンダープレフィックスで記述量が倍以上に膨れるので、極力これらのクラスで済ませて手間とCSSサイズを削減する。
+```
+両端を開けずに等間隔整列（.bet）、縦中央揃え、SP幅で2-3-1に順番変更（.sp-1～3）。<br>
+<ul class="flex bet vcenter">
+  <li class="sp-2"><img src="https://placehold.it/100x100/1D417A/FFFFFF/?text=1" width="" height="" alt=""></li>
+  <li class="sp-3"><img src="https://placehold.it/100x150/1D417A/FFFFFF/?text=2" width="" height="" alt=""></li>
+  <li class="sp-1"><img src="https://placehold.it/100x200/1D417A/FFFFFF/?text=3" width="" height="" alt=""></li>
+</ul>
+
+
+複雑な配置も比較的簡単に実現させることができる。
+<ul class="pc-flex hcenter">
+  <li>
+    <img src="https://unsplash.it/600/400?random&n01">
+  </li>
+  <li class="flex pc-vert bet">
+    <div><img src="https://placehold.it/100x50/1D417A/FFFFFF/?text=Mini" width="" height="" alt=""></div>
+    <div><img src="https://placehold.it/100x50/1D417A/FFFFFF/?text=Mini" width="" height="" alt=""></div>
+    <div><img src="https://placehold.it/100x50/1D417A/FFFFFF/?text=Mini" width="" height="" alt=""></div>
+  </li>
+  <li>
+    <img src="https://unsplash.it/600/400?random&n05">
+  </li>
+</ul>
+```
+*/
+/*
+ ######## ##       ######## ##     ##
+ ##       ##       ##         ## ##
+ ######   ##       ######      ###
+ ##       ##       ##         ## ##
+ ##       ######## ######## ##     ##
+*/
+.flex {
+  display: flex;
+}
+// ↓SP以外の幅
+@media #{$media-notsp} {
+  .pc-flex {
+    display: flex;
+  }
+}
+// ↑SP以外の幅
+// ↓SP相当幅
+@media #{$media-sp} {
+  .sp-flex {
+    display: flex;
+  }
+}
+// ↑SP相当幅
+/*
+          #######  ########
+         ##     ## ##     ##
+ ####### ##     ## ########
+         ##     ## ##
+          #######  ##
+*/
+.flex,
+.pc-flex,
+.sp-flex {
+  &.bet {
+    justify-content: space-between;
+    //アイテムを均等に揃える　両端を詰める
+  }
+  &.aro {
+    justify-content: space-around;
+    //均等に揃える　両端も空ける
+  }
+  &.vstart {
+    align-items: flex-start;
+    //アイテムを上段に揃える
+  }
+  &.vend {
+    align-items: flex-end;
+    //アイテムを下段に揃える
+  }
+  &.vcenter {
+    align-items: center;
+    //アイテムを中段に揃える
+  }
+  &.hstart {
+    justify-content: flex-start;
+    //左端に寄せる
+  }
+  &.hcenter {
+    justify-content: center;
+    //アイテムを水平上の中央に寄せる
+  }
+  &.hend {
+    justify-content: flex-end;
+    //右端に揃える
+  }
+  &.str {
+    align-items: stretch;
+    //アイテムの高さを統一する
+  }
+  &.vert {
+    flex-direction: column;
+    //上から並べていく
+  }
+  &.break {
+    flex-wrap: wrap;
+    //アイテムを折り返す
+  }
+}
+/*
+         ########   ######
+         ##     ## ##
+ ####### ########  ##
+         ##        ##
+         ##         ######
+*/
+.flex,
+.pc-flex {
+  // ↓SP以外の幅
+  @media #{$media-notsp} {
+    &.pc-bet {
+      justify-content: space-between;
+      //アイテムを均等に揃える　両端を詰める
+    }
+    &.pc-aro {
+      justify-content: space-around;
+      //均等に揃える　両端も空ける
+    }
+    &.aro {
+      justify-content: space-around;
+      //均等に揃える　両端も空ける
+    }
+    &.pc-vstart {
+      align-items: flex-start;
+      //アイテムを上段に揃える
+    }
+    &.pc-vend {
+      align-items: flex-end;
+      //アイテムを下段に揃える
+    }
+    &.pc-vcenter {
+      align-items: center;
+      //アイテムを中段に揃える
+    }
+    &.pc-hstart {
+      justify-content: flex-start;
+      //左端に寄せる
+    }
+    &.pc-hcenter {
+      justify-content: center;
+      //アイテムを水平上の中央に寄せる
+    }
+    &.pc-hend {
+      justify-content: flex-end;
+      //右端に揃える
+    }
+    &.pc-str {
+      align-items: stretch;
+      //アイテムの高さを統一する
+    }
+    &.pc-vert {
+      flex-direction: column;
+      //上から並べていく
+    }
+    &.pc-break {
+      flex-wrap: wrap;
+      //アイテムを折り返す
+    }
+    > .pc-1 {
+      order: 1;
+    }
+    > .pc-2 {
+      order: 2;
+    }
+    > .pc-3 {
+      order: 3;
+    }
+  }
+  // ↑SP以外の幅
+}
+/*
+          ######  ########
+         ##       ##     ##
+ #######  ######  ########
+               ## ##
+          ######  ##
+*/
+.flex,
+.sp-flex {
+  // ↓SP相当幅
+  @media #{$media-sp} {
+    &.sp-bet {
+      justify-content: space-between;
+      //アイテムを均等に揃える　両端を詰める
+    }
+    &.sp-aro {
+      justify-content: space-around;
+      //均等に揃える　両端も空ける
+    }
+    &.aro {
+      justify-content: space-around;
+      //均等に揃える　両端も空ける
+    }
+    &.sp-vstart {
+      align-items: flex-start;
+      //アイテムを上段に揃える
+    }
+    &.sp-vend {
+      align-items: flex-end;
+      //アイテムを下段に揃える
+    }
+    &.sp-vcenter {
+      align-items: center;
+      //アイテムを中段に揃える
+    }
+    &.sp-hstart {
+      justify-content: flex-start;
+      //左端に寄せる
+    }
+    &.sp-hcenter {
+      justify-content: center;
+      //アイテムを水平上の中央に寄せる
+    }
+    &.sp-hend {
+      justify-content: flex-end;
+      //右端に揃える
+    }
+    &.sp-str {
+      align-items: stretch;
+      //アイテムの高さを統一する
+    }
+    &.sp-vert {
+      flex-direction: column;
+      //上から並べていく
+    }
+    &.sp-break {
+      flex-wrap: wrap;
+      //アイテムを折り返す
+    }
+    > .sp-1 {
+      order: 1;
+    }
+    > .sp-2 {
+      order: 2;
+    }
+    > .sp-3 {
+      order: 3;
+    }
+  }
+  // ↑SP相当幅
+}
+/*
+ ##     ##  #######  ##     ## ######## ########
+ ##     ## ##     ## ##     ## ##       ##     ##
+ ######### ##     ## ##     ## ######   ########
+ ##     ## ##     ##  ##   ##  ##       ##   ##
+ ##     ##  #######     ###    ######## ##     ##
+*/
+/*
+#styleguide
+ホバー透過　.op
+
+マウスオーバーで不透明度を下げる。ホバー効果に拘る必要がない箇所向け。SP無効。
+
+```
+<a href="" class="op"><img src="https://unsplash.it/600/400?random&n06"></a>
+```
+*/
+@media #{$media-notsp} {
+  //SP以外の幅
+  .op:hover {
+    opacity: 0.7;
+  }
+}
+//SP以外の幅
+/*
+ ########    ###    ########  ##       ########
+    ##      ## ##   ##     ## ##       ##
+    ##    ##     ## ########  ##       ######
+    ##    ######### ##     ## ##       ##
+    ##    ##     ## ########  ######## ########
+*/
+/*
+#styleguide
+SPテーブル　ブレーク　.sp-table-break
+
+SP解像度時、2カラムのテーブルをカラム落ちさせる。
+theadなし、2カラムのテーブル限定。
+
+```
+<div class="sp-table-break">
+  <table>
+    <tbody>
+      <tr><th>氏名</th><td>ほげ 太郎</td></tr>
+      <tr><th>Name</th><td>Hoge Taro</td></tr>
+      <tr><th>年齢</th><td>22</td></tr>
+      <tr><th>資格</th><td><ul class="u-list">
+        <li>普通運転免許</li>
+        <li>機械製図技能検定3級</li>
+        <li>危険物取扱者乙4種</li>
+      </ul></td></tr>
+      <tr><th>趣味</th><td>天体観測</td></tr>
+      <tr><th>特技</th><td>整理整頓</td></tr>
+      <tr><th>志望動機</th><td>御社は、流通業界向けのシステム開発に特化していらっしゃいます。<br class="pc">実際に国内の大手運送会社などにも多く御社のサービスが導入されていますし、日本の物流・流通のIT化を牽引してきた企業だと感じています。<br class="pc">今後エンジニアとしてやっていく上で、一人ひとりが専門性や強みを持つことは重要です。<br class="pc">今までエンジニアとして幅広く開発に関わってきたノウハウを活かし、今後は1つの領域に特化して経験を積みたいと思っています。<br class="pc">御社で「誰にも負けない強み」を手に入れたいと思い、御社を志望いたしました。志望動機と写真は拾い物ですが、何卒ご承知おき願います。</td></tr>
+      <tr><th>写真</th><td><img src="https://unsplash.it/600/400?random&n07"></td></tr>
+    </tbody>
+  </table>
+</div>
+```
+*/
+/*
+#styleguide
+SPテーブル　オーバー　.sp-table-over
+
+SP解像度時、入り切らないテーブルは横スクロール化する。
+Bootstrap等で見かける案。
+
+```
+<div class="sp-table-over">
+<table>
+  <thead><tr>
+    <th>画像1ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</th>
+    <th>画像2ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</th>
+    <th>画像3</th>
+    <th>画像4ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</th>
+    <th>画像5</th>
+    <th>画像6</th>
+    <th>画像7</th>
+  </tr></thead>
+  <tbody>
+    <tr>
+      <th><img src="https://unsplash.it/600/400?random&n08"></th>
+      <td><img src="https://unsplash.it/600/400?random&n09"></td>
+      <td><img src="https://unsplash.it/600/400?random&n10"></td>
+      <td><img src="https://unsplash.it/600/400?random&n11"></td>
+      <td><img src="https://unsplash.it/600/400?random&n12"></td>
+      <td><img src="https://unsplash.it/600/400?random&n13"></td>
+      <td><img src="https://unsplash.it/600/400?random&n14"></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+```
+*/
+@media #{$media-sp} {
+  .sp-table-break {
+    // 2カラムテーブルをカラム落ちさせる
+    td,
+    th,
+    tr {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+  .sp-table-over {
+    overflow-x: auto;
+    th {
+      white-space: nowrap;
+    }
+  }
+}
+/*
+ ##    ##  #######  ##     ## ######## ##     ## ########  ########
+  ##  ##  ##     ## ##     ##    ##    ##     ## ##     ## ##
+    ##    ##     ## ##     ##    ##    ##     ## ########  ######
+    ##    ##     ## ##     ##    ##    ##     ## ##     ## ##
+    ##     #######   #######     ##     #######  ########  ########
+*/
+/*
+#styleguide
+レスポンシブYouTube　.youtube-wrap
+
+埋め込みYouTubeをレスポンシブ化する。
+
+```
+<div class="youtube-wrap">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5BIAdWNcr8Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+```
+*/
+.youtube-wrap {
+  position: relative;
+  padding-top: 56.25%;
+  width: 100%;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+/*
+
+  ######   ########     ###    ##    ##  ######   ######     ###    ##       ########
+ ##        ##     ##  ##   ##    ####   ##       ##        ##   ##  ##       ##
+ ##   #### ########  ##     ##    ##     ######  ##       ##     ## ##       ######
+ ##    ##  ##   ##   #########    ##          ## ##       ######### ##       ##
+  ######   ##     ## ##     ##    ##     ######   ######  ##     ## ######## ########
+
+*/
+.grayscale {
+  filter: grayscale(100%);
+}
+
+/*
+#styleguide
+グレースケール .grayscale
+
+内部要素をグレースケールにする。IEには効果なし
+```
+
+<p>通常</p>
+<p style="color:red">テキストテキスト</p>
+<img src="https://unsplash.it/600/400?random&gray..." width="20%">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.1043551257094!2d140.03416711525796!3d35.64980048020159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x602281f4fe8fadc9%3A0xcca485b949001501!2z5bmV5by144Oh44OD44K7IOWbvemam-WxleekuuWgtDktMTHjg5vjg7zjg6s!5e0!3m2!1sja!2sjp!4v1538103561889" width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+<p>grayscale</p>
+<div class="grayscale">
+<p style="color:red">テキストテキスト</p>
+<img src="https://unsplash.it/600/400?random&gray..." width="20%">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.1043551257094!2d140.03416711525796!3d35.64980048020159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x602281f4fe8fadc9%3A0xcca485b949001501!2z5bmV5by144Oh44OD44K7IOWbvemam-WxleekuuWgtDktMTHjg5vjg7zjg6s!5e0!3m2!1sja!2sjp!4v1538103561889" width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
+```
+*/

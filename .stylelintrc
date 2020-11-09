@@ -1,0 +1,47 @@
+{
+  "plugins": [
+    "stylelint-scss", # SCSSのLintに対応
+  ],
+  "extends": [
+    "stylelint-config-standard", # ベースとなるルールセットをインポート
+    "stylelint-config-recess-order", # プロパティソート
+  ],
+  "ignoreFiles": [ # 除外ファイル
+    "**/*.js"
+  ],
+  "rules": { # ベースルールの中から、合わないルールやフォーマッターと衝突するルールを調整
+    "at-rule-empty-line-before": null, # @ルールセット前の空行
+    "at-rule-no-unknown": null, # 未知の@の評価（CSS基準）
+    "block-closing-brace-empty-line-before": null, # ブロックの末尾に空行を入れない
+    "block-closing-brace-newline-after": null, # プロパティの閉じカッコの後の改行
+    "block-no-empty": null, # 空ブロックの評価
+    "color-hex-case": null, # カラーコードの大文字小文字に拘る
+    "color-hex-length": null, # カラーコードの短縮
+    "comment-empty-line-before": null, # コメント前の空行
+    "comment-whitespace-inside": null, # コメント内のスペース
+    "declaration-block-trailing-semicolon": null, # ブロック末尾のスタイルにセミコロンを入れる (jQueryのCSSメソッドと衝突)
+    "declaration-colon-newline-after": null, # プロパティのコロンの後の改行
+    "declaration-empty-line-before": null, # 各プロパティ間の空行
+    "font-family-no-missing-generic-family-keyword": null, # フォントファミリーの内容
+    "function-comma-space-after": null, # 関数内のカンマの後にスペースを付ける
+    "function-name-case": null, # 関数の大文字小文字
+    "indentation": null, # インデント単位
+    "length-zero-no-unit": null, # 0に単位を付ける
+    "max-empty-lines": 10, # 連続した空行の許容数
+    "media-feature-colon-space-after": null, # メディアクエリのコロンの後に半角スペース
+    "no-descending-specificity": null, # 優先度が劣るセレクターの後出し
+    "no-duplicate-selectors": null, # セレクターの重複
+    "no-empty-source": null, # 空のソースのインポート
+    "no-eol-whitespace": null, # 行末の空白
+    "number-no-trailing-zeros": null, # 1.0などの不要な0
+    "rule-empty-line-before": null, # ルールセット前の空行
+    "scss/at-rule-no-unknown": true, # 未知の@の評価（SCSS基準）
+    "selector-combinator-space-before": null, # 「>」等の記号系セレクタを半角スペースで区切る
+    "selector-descendant-combinator-no-non-space": null, # セレクタを2個以上の半角スペースや改行で区切る
+    "selector-list-comma-newline-after": null, # セレクターごとに改行させる
+    "selector-pseudo-element-colon-notation": null, # 疑似要素のコロン数
+    "string-quotes": "double", # クォーテーションの種類
+    "value-list-comma-newline-after": null, # カンマ区切りの指定を折り返す
+    "value-keyword-case": null, # キーワードの大文字小文字
+  }
+}

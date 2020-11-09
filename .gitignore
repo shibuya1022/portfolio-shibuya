@@ -1,0 +1,30 @@
+# 生成ファイル
+dist
+dest
+Template
+
+# 個人作業用ファイル
+*.psd
+*.lnk
+\.php_cs\.dist
+
+# Node.js
+node_modules
+
+# 中間生成ファイル
+\.cache/
+src/scss/module/_iconfont\.scss
+~\$*\.xlsx
+
+# 自動生成ドキュメント
+_docs/StyleGuide/
+_docs/JSDoc/
+
+# OS固有ファイル
+\.DS_Store
+Thumbs.db
+
+# エディタ固有ファイル
+\.idea
+
+# 追記

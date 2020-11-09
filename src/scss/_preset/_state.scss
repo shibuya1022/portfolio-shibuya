@@ -1,0 +1,177 @@
+/*
+#overview
+State
+
+特定のワンポイントに作用させる目的のスタイル
+*/
+
+/*
+######  ####### ##    ## ##  ###### #######
+##   ## ##      ##    ## ## ##      ##
+##   ## #####   ##    ## ## ##      #####
+##   ## ##       ##  ##  ## ##      ##
+######  #######   ####   ##  ###### #######
+*/
+
+// ↓SP以外の幅
+@media #{$media-notsp} {
+  .sp {
+    display: none !important;
+  }
+  .pc-hide {
+    display: none;
+  }
+}
+// ↑SP以外の幅
+
+// ↓SP相当幅
+@media #{$media-sp} {
+  .pc {
+    display: none !important;
+  }
+  .sp-hide {
+    display: none;
+  }
+}
+
+/*
+#styleguide
+ロック .lock
+
+body専用。スクロールを無効にする。iPhoneには効かない。
+```
+<a onclick="document.body.classList.toggle('lock')">テストロック</a>
+```
+*/
+body.lock {
+  overflow: hidden;
+}
+
+/*
+#styleguide
+セリフ .serif
+
+適用範囲を明朝体にする。
+```
+<p>テキストテキストテキスト<span class="serif">テキストテキストテキストテキスト</span>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+```
+*/
+.serif {
+  font-family: $serif;
+}
+
+/*
+#styleguide
+常に隠す要素 .is-none
+
+display: none!important;をかける。
+*/
+.is-none {
+  //常に隠す要素
+  display: none !important;
+}
+
+/*
+#styleguide
+JSで出し入れする要素 .js-hide
+
+JSの作用で出現する要素を表す。スタイルは普通のdisplay: none;のみ。
+*/
+.js-hide {
+  //JSで出し入れする要素
+  display: none;
+}
+
+/*
+#styleguide
+テキスト配置 .ta-center,.ta-left,.ta-right
+
+text-alignを変更する。頭に「pc-」「sp-」でデバイスを限定できる。
+一箇所だけ中央揃えなど、少数派のバリエーションへの対処や、納品後の調整向け。
+*/
+.ta-center {
+  text-align: center;
+}
+.ta-right {
+  text-align: right;
+}
+.ta-left {
+  text-align: left;
+}
+// ↓SP以外の幅
+@media #{$media-notsp} {
+  .pc-ta-center {
+    text-align: center;
+  }
+
+  .pc-ta-right {
+    text-align: right;
+  }
+
+  .pc-ta-left {
+    text-align: left;
+  }
+}
+// ↑SP以外の幅
+
+// ↓SP相当幅
+@media #{$media-sp} {
+  .sp-ta-center {
+    text-align: center;
+  }
+
+  .sp-ta-right {
+    text-align: right;
+  }
+
+  .sp-ta-left {
+    text-align: left;
+  }
+}
+// ↑SP相当幅
+
+/*
+#styleguide
+ボールド .fw-700,.fw-900
+
+太字にする。少数派バリエーションへの対処や、納品後の調整向け。
+*/
+.fw-700 {
+  font-weight: 700;
+}
+
+.fw-900 {
+  font-weight: 900;
+}
+
+/*
+#styleguide
+フォントサイズ .fz-e7～,.fz-e9
+
+文字サイズを0.7em～0.9emの範囲で変更。納品後の調整向け。
+*/
+
+.fz-e7 {
+  font-size: 0.7em;
+}
+.fz-e8 {
+  font-size: 0.8em;
+}
+.fz-e9 {
+  font-size: 0.9em;
+}
+
+/*
+#styleguide
+クリックイベント無効化 is-false
+
+ホバー効果、イベントトラッキング、aタグのページ遷移を無効化する。
+　
+IE,Edgeのaタグに使う場合、aタグをblockかinline-blockにする必要がある。
+```
+<a style="display:inline-block" class="is-false" onclick="document.body.classList.toggle('lock')">テストロック</a>
+```
+*/
+.is-false {
+  pointer-events: none;
+}

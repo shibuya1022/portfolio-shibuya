@@ -1,0 +1,327 @@
+.md-lay {
+  $mb_lay_anime: 0.5s;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  vertical-align: middle;
+  transition-duration: $mb_lay_anime;
+  transform: perspective(0) translate3d(0, 0, 0);
+  .lay-bg {
+    position: relative;
+    z-index: 2;
+    transition-duration: $mb_lay_anime;
+    img {
+      width: 100%;
+      vertical-align: middle;
+    }
+    .on {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition-duration: $mb_lay_anime;
+    }
+    .off {
+      position: relative;
+      transition-duration: $mb_lay_anime;
+    }
+  }
+  &::before,
+  &::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    opacity: 0;
+    transition-duration: $mb_lay_anime;
+    transform: perspective(0) translate3d(0, 0, 0);
+  }
+  // brightオプション用
+  &::before {
+    z-index: 3;
+    background: rgba(#000, 0.5);
+  }
+  // borderオプション用フレームを付ける
+  &::after {
+    z-index: 4;
+  }
+  //ズーム効果をつける
+  &.zoom {
+    overflow: hidden;
+  }
+  // ブロック要素にする
+  &.block {
+    display: block;
+  }
+  // MVなど、単体で画面幅と同等以上の画像を扱う
+  &.over {
+    display: block;
+    .lay-bg {
+      img {
+        margin-left: 50%;
+        width: auto;
+        max-width: none;
+        transform: translate(-50%, 0);
+      }
+    }
+  }
+  // 特殊装飾 幅の制限を完全に無視する zoom使用不可
+  &.through {
+    display: inline-block;
+    overflow: visible;
+    .lay-bg {
+      img {
+        width: auto;
+        max-width: none;
+      }
+    }
+  }
+  // カバーを付けない
+  &.no-cover {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+  // ↓SP以外の幅
+  @media #{$media-notsp} {
+    // MVなど、単体で画面幅と同等以上の画像を扱う
+    &.pc-over {
+      display: block;
+      .lay-bg {
+        img {
+          margin-left: 50%;
+          width: auto;
+          max-width: none;
+          transform: translate(-50%, 0);
+        }
+      }
+    }
+    // 特殊装飾 幅の制限を完全に無視する zoom使用不可
+    &.pc-through {
+      display: inline-block;
+      overflow: visible;
+      .lay-bg {
+        img {
+          width: auto;
+          max-width: none;
+        }
+      }
+    }
+  }
+  // ↑SP以外の幅
+  // ↓SP相当幅
+  @media #{$media-sp} {
+    // MVなど、単体で画面幅と同等以上の画像を扱う
+    &.sp-over {
+      display: block;
+      .lay-bg {
+        img {
+          margin-left: 50%;
+          width: auto;
+          max-width: none;
+          transform: translate(-50%, 0);
+        }
+      }
+    }
+    // 特殊装飾 幅の制限を完全に無視する zoom使用不可
+    &.sp-through {
+      display: inline-block;
+      overflow: visible;
+      .lay-bg {
+        img {
+          width: auto;
+          max-width: none;
+        }
+      }
+    }
+  }
+  // ↑SP相当幅
+  .lay-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    .in {
+    }
+  }
+}
+a.active {
+  .md-lay {
+    .lay-bg {
+      .on {
+        opacity: 1;
+      }
+      .off {
+        opacity: 0;
+      }
+    }
+    &.zoom .lay-bg {
+      transform: scale(1.05);
+    }
+    &.bright::before {
+      opacity: 1;
+    }
+    &.border::after {
+      box-shadow: 0 0 0 10px rgba(#fff, 0.5) inset;
+      opacity: 1;
+    }
+  }
+}
+// ↓SP以外の幅
+@media #{$media-notsp} {
+  a:hover {
+    .md-lay {
+      .lay-bg {
+        .on {
+          opacity: 1;
+        }
+        .off {
+          opacity: 0;
+        }
+      }
+      &.zoom .lay-bg {
+        transform: scale(1.05);
+      }
+      &.bright::before {
+        opacity: 1;
+      }
+      &.border::after {
+        box-shadow: 0 0 0 10px rgba(#fff, 0.5) inset;
+        opacity: 1;
+      }
+    }
+  }
+  a:not(:hover) {
+    .md-lay.hide {
+      .lay-content {
+        opacity: 0;
+      }
+    }
+  }
+}
+// ↑SP以外の幅
+/* #styleguide
+レイヤー .md-lay
+
+画像に文字を載せたり、aタグの小要素にした時のホバーアニメを複数種類付与できる。
+「lay-bg」内の要素をつっかえ棒にする仕組みなので画像かなにかが必須。bgの要素には他のパーツが重なるので、原則クリック対象にできない。
+　
+「lay-content」に文字などの要素を載せられる。「flex」系の位置指定用クラスで八方向に移動できる。
+アニメはborder（枠線を出す）zoom（画像を拡大） bright（暗くする）hide（lay-contentを一旦隠し、ホバー時に出す）の4点。
+　
+使用機会の多さに対してマークアップ量が多いので、中央寄せをベースにしたスニペット登録推奨。
+```
+<div class="md-lay bright zoom border">
+  <div class="lay-bg">
+    <img src="https://placehold.it/300x400/1D417A/FFFFFF/?text=300x400" width="" height="" alt="">
+  </div>
+  <div class="lay-content flex vcenter hcenter"><div class="in">
+    <span style="font-size:3em;color:#F00;">中央寄せ</span>
+  </div></div>
+</div>
+<div class="md-lay bright zoom border">
+  <div class="lay-bg">
+    <iframe width="300" height="400" src="https://www.youtube.com/embed/U-pt_To6yZ8?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay0=&amp;loop=1" frameborder="0" allow=" encrypted-media" allowfullscreen></iframe>
+  </div>
+  <div class="lay-content flex vend hend"><div class="in">
+    <span style="font-size:3em;color:#F00;">右下寄せ</span>
+  </div></div>
+</div>
+<div class="md-lay bright zoom border">
+  <div class="lay-bg">
+  <p style="max-width:300px">
+    テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+  </p>
+  </div>
+  <div class="lay-content flex vstart hstart"><div class="in">
+    <span style="font-size:3em;color:#F00;">左上寄せ</span>
+  </div></div>
+</div>
+<a href="" style="display:inline-block">
+  <div class="md-lay bright zoom border">
+    <div class="lay-bg">
+      <img src="https://placehold.it/300x400/1D417A/FFFFFF/?text=300x400" width="" height="" alt="">
+    </div>
+    <div class="lay-content flex vcenter hcenter"><div class="in">
+      <span style="font-size:3em;color:#F00;">リンク</span>
+    </div></div>
+  </div>
+</a>
+<a href="">
+  <div class="md-lay bright zoom">
+    <div class="lay-bg">
+      <img src="https://placehold.it/300x400/1D417A/FFFFFF/?text=300x400" width="" height="" alt="">
+    </div>
+    <div class="lay-content flex vend hcenter max"><div class="in">
+      <div style="background:#000">
+        <span style="font-size:3em;color:#F00;">実用例</span>
+      </div>
+    </div></div>
+  </div>
+</a>
+
+<p style="padding-top:2em;">
+「over」を付けると画像本来の高さを保持し、はみ出す部分は自主的にカットする。MV向け。
+「pc-over」「sp-over」で片方だけに適用可能。
+</p>
+<div class="md-lay over">
+  <div class="lay-bg">
+    <img src="https://placehold.it/8000x300/1D417A/FFFFFF/?text=8000x300" width="" height="" alt="">
+  </div>
+  <div class="lay-content flex vcenter hcenter"><div class="in">
+    <span style="font-size:3em;color:#F00;">ページタイトル</span>
+  </div></div>
+</div><br>
+
+<div class="md-lay">
+  <div class="lay-bg">
+    <img src="https://placehold.it/8000x300/1D417A/FFFFFF/?text=8000x300" width="" height="" alt="">
+  </div>
+  <div class="lay-content flex vcenter hend"><div class="in">
+    <span style="font-size:3em;color:#F00;">普通に貼った場合</span>
+  </div></div>
+</div><br>
+
+<p style="padding-top:2em;">
+「through」を付けると完全オリジナルサイズで突き抜ける。画像だけwrapから飛び出しているような特殊レイアウト向け。<br>
+通常の配置を貫通するためのオプションなので、親要素にoverflow:hidden;が必須。
+「zoom」効果は拡大画像がはみ出すようになるので使用不可。「border」も線が切れるので向かない。
+「pc-through」「sp-through」で片方だけに適用可能。
+</p>
+
+
+
+<div style="width:100%;overflow:hidden">
+<div class="wrap">
+<a href="" style="display:inline-block">
+<ul class="flex vcenter">
+  <li>
+  <p>
+    テキストテキストテキスト
+  </p>
+  <span class="md-btn b-line w300">
+    続きを読む
+  </span>
+  </li>
+  <li>
+  <div class="md-lay through bright border hide">
+    <div class="lay-bg">
+      <img src="https://placehold.it/2000x300/1D417A/FFFFFF/?text=2000x300" width="" height="" alt="">
+    </div>
+    <div class="lay-content flex vcenter hcenter"><div class="in">
+        <span style="font-size:3em;color:#F00;">詳細を見る</span>
+    </div></div>
+  </div>
+  </li>
+</ul>
+</a>
+</div>
+</div>
+
+``` */

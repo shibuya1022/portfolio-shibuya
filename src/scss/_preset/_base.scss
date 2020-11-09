@@ -1,0 +1,138 @@
+/*
+ ##     ## ######## ##     ## ##
+ ##     ##    ##    ###   ### ##
+ #########    ##    ## ### ## ##
+ ##     ##    ##    ##     ## ##
+ ##     ##    ##    ##     ## ########
+*/
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+/*
+ #### ##     ##  ######
+  ##  #### #### ##
+  ##  ## ### ## ##   ####
+  ##  ##     ## ##    ##
+ #### ##     ##  ######
+*/
+img {
+  box-sizing: content-box;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle; //インライン画像のベースライン余白除去
+}
+
+/*
+ ######## ######## ##     ## ########
+    ##    ##         ## ##      ##
+    ##    ######      ###       ##
+    ##    ##         ## ##      ##
+    ##    ######## ##     ##    ##
+*/
+
+a {
+  transition-duration: 0.5s;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+@include basefont {
+  //body,button,input,select,textareaのフォント設定
+  font-family: $sans_serif;
+  word-wrap: break-word;
+}
+
+@include placeholder {
+  //プレースホルダー（テキストフォームの例文）のスタイル設定
+  color: #c6c6c6;
+}
+
+sup {
+  font-size: 0.7em;
+  vertical-align: super;
+}
+
+/*
+########  #####  ######  ##      #######
+   ##    ##   ## ##   ## ##      ##
+   ##    ####### ######  ##      #####
+   ##    ##   ## ##   ## ##      ##
+   ##    ##   ## ######  ####### #######
+*/
+table {
+  width: 100%;
+  max-width: 100%;
+  p:not([class]):not(:last-child) {
+    margin-bottom: 1em;
+  }
+}
+td,
+th {
+  min-height: 1em;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+/*
+#######  ######  ######  ###    ###
+##      ##    ## ##   ## ####  ####
+#####   ##    ## ######  ## #### ##
+##      ##    ## ##   ## ##  ##  ##
+##       ######  ##   ## ##      ##
+*/
+// iOSのボタン装飾無効
+input[type="button"],
+input[type="submit"] {
+  -webkit-appearance: none;
+}
+// アウトラインを消して背景を初期化
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+textarea,
+button,
+select {
+  background: #fff;
+  outline: none;
+}
+// ボタン・ラベル上のマウスカーソルを指カーソルに
+a,
+area,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="checkbox"],
+input[type="radio"],
+button,
+select,
+label {
+  cursor: pointer;
+}
+
+// フォーカス時の装飾
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+textarea {
+  &:focus {
+    box-shadow: 1px 1px 0 0 #c5c7cb inset;
+  }
+}

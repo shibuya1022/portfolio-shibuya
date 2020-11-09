@@ -1,0 +1,54 @@
+/*================================
+
+各種Webフォント
+@include webFontのコメントアウトを外すか、新規追加して適用
+@include webFont('フォント名', '適用するセレクタ名', '読み込み前に表示するフォントタイプ: [sans-serif] もしくは [serif]');
+
+//================================*/
+
+// https://fonts.google.com/specimen/Noto+Sans+JP
+// @include webFont('Noto Sans JP', '.noto', 'sans-serif');
+
+// https://fonts.google.com/specimen/Lato
+// @include webFont('Lato', '.lato', 'sans-serif');
+
+// https://fonts.google.com/specimen/Open+Sans
+// @include webFont('Bebas Neue', '.bebas', 'sans-serif');
+
+// https://fonts.google.com/specimen/Oswald
+// @include webFont('Open Sans', '.opens', 'sans-serif');
+
+// https://fonts.google.com/specimen/Bebas+Neue
+// @include webFont('Oswald', '.oswald', 'sans-serif');
+
+// https://fonts.google.com/specimen/Passion+One
+// @include webFont('Passion One', '.passion', 'sans-serif');
+
+// https://fonts.google.com/specimen/Teko
+// @include webFont('Teko', '.teko', 'sans-serif');
+
+// https://fonts.google.com/specimen/Roboto+Slab
+// @include webFont('Roboto Slab', '.robos', 'sans-serif');
+
+// https://fonts.google.com/specimen/Raleway?selection.family=Raleway
+// @include webFont('Raleway', '.rale', 'sans-serif');
+
+/*
+          ######  ######## ########  #### ########
+         ##       ##       ##     ##  ##  ##
+ #######  ######  ######   ########   ##  ######   #######
+               ## ##       ##   ##    ##  ##
+          ######  ######## ##     ## #### ##
+*/
+
+// https://fonts.google.com/specimen/Noto+Serif+JP
+// @include webFont('Noto Serif JP', '.notos', 'serif');
+
+// https://fonts.google.com/specimen/Lora
+// @include webFont('Lora', '.lora', 'serif');
+
+// https://fonts.google.com/specimen/Libre+Baskerville
+// @include webFont('Libre Baskerville', '.bask', 'serif');
+
+// https://fonts.google.com/specimen/Cormorant+Garamond
+// @include webFont('Cormorant Garamond', '.corm', 'serif');

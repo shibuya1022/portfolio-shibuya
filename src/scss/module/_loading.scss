@@ -1,0 +1,65 @@
+.md-loading {
+  $padding: 3rem; // 上下余白
+  $paddingSP: 3rem; // 上下余白SP
+  $size: 5rem; // 円の直径
+  $sizeSP: 5rem; // 円の直径SP
+  $lineSize: 3px; // 線の太さ
+  $lineSizeSP: 5px; // 線の太さSP
+  $time: 1s; //1ループの時間
+  $colorA: $siteColor; // メインカラー
+  $colorB: rgba($siteColor, 0.5); // サブカラー
+  padding: $padding 0;
+  transition-duration: 0.5s;
+
+  @if $padding != $paddingSP {
+    @media #{$media-sp} {
+      padding: $paddingSP 0;
+    }
+  }
+  &::before {
+    display: block;
+    margin: 0 auto;
+    border: $lineSize solid $colorA;
+    border-bottom-color: $colorB;
+    border-radius: 50%;
+    width: $size;
+    height: $size;
+    content: "";
+    animation-name: loop; //アニメーション名
+    animation-duration: $time; //1ループの時間
+    animation-timing-function: linear; //アニメーションタイプ
+    animation-iteration-count: infinite; //実行回数
+    @keyframes loop {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    @if $size != $sizeSP {
+      @media #{$media-sp} {
+        width: $sizeSP;
+        height: $sizeSP;
+      }
+    }
+    @if $lineSize != $lineSizeSP {
+      @media #{$media-sp} {
+        border: $lineSizeSP solid $colorA;
+        border-bottom-color: $colorB;
+      }
+    }
+  }
+  &:not(.active) {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+/*
+#styleguide
+ローディングアニメ .md-loading
+
+円形のローディングアニメを出す。「.active」を消すと非表示になる。
+```
+<div class="md-loading active"></div>
+
+```
+*/

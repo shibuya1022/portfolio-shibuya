@@ -1,0 +1,118 @@
+/*
+-apple-system：            iOS
+NotoSans系：               Android 6.0・Notoインストール環境・Webフォント指定
+游ゴシック Medium：        Win10
+游ゴシック体：             Mac
+Hiragino Kaku Gothic ProN：Mac
+メイリオ：                 Win8以前
+*/
+$sans_serif: -apple-system, Noto Sans CJK JP, Noto Sans Japanese, Noto Sans JP, 游ゴシック Medium, Yu Gothic Medium,
+  游ゴシック体, YuGothic, Hiragino Kaku Gothic ProN, メイリオ, Meiryo, sans-serif;
+/*
+Noto Serif JP         Webフォント指定
+Yu Mincho             Win10
+YuMincho：            Mac
+Hiragino Mincho ProN：Mac iOS
+NotoSerifCJKjp：      Android等をWebフォントでカバーする場合
+HGS明朝：             MS Officeインストール環境
+*/
+$serif: "Noto Serif JP", Yu Mincho, YuMincho, Hiragino Mincho ProN, "NotoSerifCJKjp", HGS明朝E, HG明朝E, serif;
+
+//================================
+// ■カラー
+//================================
+$siteColor: #0251b6;
+$fontColor: #333333;
+$borderColor: #e6e6e6;
+
+$twitterColor: #1da1f2;
+$facebookColor: #4267b2;
+$lineColor: #00b900;
+$hatenaColor: #00a4de;
+$youTubeColor: #ff0000;
+$inoreaderColor: #00a7f6;
+$feedlyColor: #2bb24c;
+
+//================================
+// ■サイズ
+//================================
+$pad: 3.125%; //基礎余白
+$pad1: $pad;
+$pad2: $pad * 2;
+$vw10px: 3.125vw;
+$vw11px: 3.4375vw;
+$vw12px: 3.75vw;
+$vw13px: 4.0625vw;
+$vw14px: 4.375vw;
+$vw15px: 4.6875vw;
+$vw16px: 5vw;
+$vw17px: 5.3125vw;
+$vw18px: 5.625vw;
+$vw19px: 5.9375vw;
+$vw20px: 6.25vw;
+$vw21px: 6.5625vw;
+$vw22px: 6.875vw;
+$vw23px: 7.1875vw;
+$vw24px: 7.5vw;
+$vw25px: 7.8125vw;
+$vw26px: 8.125vw;
+$vw27px: 8.4375vw;
+$vw28px: 8.75vw;
+$vw29px: 9.0625vw;
+$vw30px: 9.375vw;
+$vw50px: 15.625vw;
+$vw70px: 21.875vw;
+
+//================================
+// ■ブレークポイント
+//================================
+//無印iPadはSP扱い　調整はmedia-ipadで個別対応
+$site-width: 1200px; //サイト幅
+$pc-width: 1024px; //PC解像度
+$tab-width: 769px; //TAB解像度
+$sp-width: 768px; //SP解像度
+$media-port: "screen and (orientation:portrait)"; //ポートレート
+$media-land: "screen and (orientation:landscape)"; //ランドスケープ
+$media-full: "screen and (min-width:#{$site-width})"; //想定最大幅
+$media-notfull: "screen and (max-width:#{$site-width - 1})"; //最大未満
+$media-pc: "screen and (min-width:#{$pc-width})"; //PC相当以上
+$media-tab: "screen and (min-width:#{$tab-width}) and (max-width:#{$pc-width - 1})"; //タブレット相当
+$media-ipad: "screen and (min-width:#{$tab-width - 1}))"; //iPad相当
+$media-notsp: "screen and (min-width:#{$tab-width})"; //SP以外
+$media-sp: "screen and (max-width:#{$sp-width})"; //SP相当
+$media-spland: "screen and (max-width:#{$sp-width}) and (orientation:landscape)"; //SPランドスケープ
+
+//コンテンツ最大幅
+@media #{$media-full} {
+}
+//コンテンツ最大幅
+
+//コンテンツ最大幅未満
+@media #{$media-notfull} {
+}
+//コンテンツ最大幅未満
+
+//SP以外の幅
+@media #{$media-notsp} {
+}
+//SP以外の幅
+
+//タブレット相当幅
+@media #{$media-tab} {
+}
+//タブレット相当幅
+
+//iPad（SP派生）相当
+@media #{$media-ipad} {
+}
+//iPad（SP派生）相当
+
+//SP以外の幅
+@media #{$media-notsp} {
+}
+//SP以外の幅
+
+//横に長い
+@media #{$media-land} {
+}
+//横に長い

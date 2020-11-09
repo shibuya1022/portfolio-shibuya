@@ -1,0 +1,388 @@
+/*
+#overview
+WordPress
+
+WordPress固有の要素に対応するクラス。
+非WPサイトでは容量の無駄になるので、空ファイルにするかimport対象から外すことを推奨。
+*/
+
+// WP管理バーがサイト表示に与える影響を抑える処理
+body:not(.wp-admin) {
+  // 管理画面では無効
+  #wpadminbar {
+    @media #{$media-notsp} {
+      // PC時はホバー時以外コンパクトにする
+      height: 10px !important;
+      overflow: hidden !important;
+      opacity: 0.5;
+      transition-duration: 0.5s;
+      &:hover {
+        height: auto !important;
+        overflow: visible !important;
+        opacity: 1;
+      }
+    }
+    @media #{$media-sp} {
+      // SP時はスクロールに追従させない
+      position: absolute !important;
+      min-width: 0 !important;
+      overflow: hidden;
+      opacity: 0.8;
+    }
+  }
+}
+/*
+ ##      ## ########          ########   #######   ######  ########
+ ##  ##  ## ##     ##         ##     ## ##     ## ##          ##
+ ##  ##  ## ########  ####### ########  ##     ##  ######     ##
+ ##  ##  ## ##                ##        ##     ##       ##    ##
+  ###  ###  ##                ##         #######   ######     ##
+*/
+/*
+#styleguide
+シングルページコンテンツ .wp-post
+
+ビジュアルエディターによって執筆されたデータを整形するクラス。
+```
+<div class="wp-post">
+            <h2>見出しH2</h2>
+<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br>
+テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<p><img class=" wp-image-1268 aligncenter" src="https://placehold.it/300x200/1D417A/FFFFFF/?text=Center" alt="写真" width="430" height="291"><br>
+テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<h2>見出しH2見出しH2見出しH2見出しH2見出しH2見出しH2見出しH2</h2>
+<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<h3>見出しH3</h3>
+<p><img class="size-medium wp-image-1275 alignright" src="https://placehold.it/300x200/1D417A/FFFFFF/?text=Right" alt="写真" width="300" height="200">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<h4>見出しH4</h4>
+<p><img class="size-medium wp-image-1275 alignleft" src="https://placehold.it/300x200/1D417A/FFFFFF/?text=Left" alt="写真" width="300" height="200">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+<ul>
+<li>テキスト</li>
+<li>テキスト</li>
+<li>テキスト</li>
+</ul>
+<ol>
+<li>番号</li>
+<li>番号</li>
+<li>番号</li>
+</ol>
+<p>&nbsp;</p>
+<blockquote><p>引用引用</p>
+<p>引用引用</p></blockquote>
+<p>&nbsp;</p>
+        </div>
+```
+*/
+
+.wp-post {
+  p {
+  }
+  h2 {
+    margin-bottom: 1em;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  h3 {
+    margin-bottom: 0.5em;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2;
+  }
+  h4,
+  h5 {
+    margin-bottom: 0.5em;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 2;
+  }
+  div,
+  p {
+    + h2,
+    + h3,
+    + h4,
+    + h5 {
+      margin-top: 5rem;
+    }
+  }
+  // ↓SP相当幅
+  @media #{$media-sp} {
+    h2 {
+      font-size: 1.8rem;
+    }
+    h3 {
+      font-size: 1.6rem;
+    }
+    h4,
+    h5 {
+      font-size: 1.4rem;
+    }
+    div,
+    p {
+      + h2,
+      + h3,
+      + h4,
+      + h5 {
+        margin-top: 2.5rem;
+      }
+    }
+  }
+  // ↑SP相当幅
+}
+.wp-post {
+  > div,
+  p {
+    margin: 0.8em 0 1.5em;
+    line-height: 1.8;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  b,
+  strong {
+    font-weight: 700;
+  }
+  em {
+    font-style: italic;
+  }
+  table {
+    margin: 2rem auto;
+    border-top: 1px solid #b9beb3;
+    border-left: 1px solid #b9beb3;
+    th,
+    td {
+      padding: 1rem;
+      border-top: 0;
+      border-right: 1px solid #b9beb3;
+      border-bottom: 1px solid #b9beb3;
+      border-left: 0;
+      text-align: center;
+    }
+    th {
+      background: #eff3f1;
+    }
+    td {
+    }
+    // ↓SP相当幅
+    @media #{$media-sp} {
+      margin: 1rem auto;
+      th,
+      td {
+        padding: 0.5rem;
+      }
+      th {
+      }
+      td {
+      }
+    }
+    // ↑SP相当幅
+  }
+  .aligncenter {
+    display: block;
+    margin: 0 auto;
+  }
+  .alignright {
+    float: right;
+    padding-right: 0 !important;
+    padding-left: 3em !important;
+  }
+  .alignleft {
+    float: left;
+    padding-right: 3em !important;
+    padding-left: 0 !important;
+  }
+  .wp-caption {
+    padding: 0.5em;
+    border: solid 2px #cfcfcf;
+    border-radius: 5px;
+    max-width: 100% !important;
+    .wp-caption-text {
+      text-align: center;
+    }
+  }
+  ol,
+  ul {
+    margin: 0 0 0 3rem;
+    li {
+      margin: 0 0 0.5em;
+    }
+  }
+  ul {
+    li {
+      list-style-type: disc;
+    }
+  }
+  ol {
+    li {
+      list-style-type: decimal;
+    }
+  }
+  img[class*="attachment-"],
+  img[class*="wp-image-"] {
+    max-width: 100%;
+    height: auto;
+  }
+  img.alignright,
+  img.alignleft {
+    padding: 0 1em 2em;
+  }
+  blockquote {
+    display: block;
+    padding: 0.5rem;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 40px;
+    -webkit-margin-end: 40px;
+    background: rgba(#000, 0.1);
+    p {
+      margin-top: 0;
+    }
+  }
+  @media #{$media-sp} {
+    //SP相当の幅
+    .alignright,
+    .alignleft {
+      float: none;
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+    img[class*="attachment-"],
+    img[class*="wp-image-"] {
+      padding: 0 0 2em;
+      width: 100%;
+    }
+  } //SP相当の幅
+}
+/*=============================
+ビジュアルエディタ
+==============================*/
+body.mceContentBody {
+  font-family: $sans_serif;
+}
+.visual-editor {
+  background: #fff;
+  div,
+  p {
+    display: block;
+    margin: 0.8em 0;
+    border: dashed 1px #dadada;
+    line-height: 1.5;
+  }
+}
+
+/*
+ ##     ## ##      ##         ########  #######  ########  ##     ##
+ ###   ### ##  ##  ##         ##       ##     ## ##     ## ###   ###
+ ## ### ## ##  ##  ## ####### ######   ##     ## ########  ## ### ##
+ ##     ## ##  ##  ##         ##       ##     ## ##   ##   ##     ##
+ ##     ##  ###  ###          ##        #######  ##     ## ##     ##
+*/
+/*
+#styleguide
+.input-content
+
+MW-WP-Formエリアの、入力画面（.mw_wp_form_input）内でのみ表示されるコンテンツ。
+```
+<p class="input-content">以下必要事項をご記入の上、「入力内容を確認」ボタンを押してください。</p>
+```
+*/
+/*
+#styleguide
+.conf-content
+
+MW-WP-Formエリアの確認画面（.mw_wp_form_confirm）内でのみ表示されるコンテンツ。
+```
+<p class="conf-content">入力内容にお間違いがなければ、「送信」ボタンを押してください。<br>修正される場合は「修正」ボタンを押してください。</p>
+```
+*/
+/*
+#styleguide
+.btn-area
+
+操作ボタンを大まかに装飾するクラス。
+確認画面ボタンはSPで1カラムになる（修正ボタンが上）。
+```
+<div class="mw_wp_form mw_wp_form_input">
+  <div class="btn-area pc-flex aro vcenter">
+    <span class="md-btn mat b-line w300 rivers conf-content"><input type="submit" name="" value="修正"></span>
+    <span class="md-btn mat black w300"><input type="submit" name="" value="確認"></span>
+  </div>
+</div>
+
+<div class="mw_wp_form mw_wp_form_confirm">
+  <div class="btn-area pc-flex aro vcenter">
+    <span class="md-btn mat b-line w300 rivers conf-content"><input type="submit" name="" value="修正"></span>
+    <span class="md-btn mat black w300"><input type="submit" name="" value="送信"></span>
+  </div>
+</div>
+
+<p>コピー用</p>
+
+<div class="btn-area pc-flex aro vcenter">
+  <span class="md-btn mat b-line w300 rivers conf-content">[mwform_backButton value="修正"]</span>
+  <span class="md-btn mat black w300">[mwform_submitButton name="mwform_submitButton" confirm_value="確認" submit_value="送信"]</span>
+</div>
+```
+*/
+/*
+#styleguide
+.formError
+
+jQuery-Validation-Engineライブラリのエラー表記用。特に意識して記述するものではなく、勝手に補正される。
+
+```
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/validationEngine.jquery.min.css" />
+<div class="mw_wp_form">
+<div class="form-validation-field-1formError parentFormundefined formError" style="opacity: 0.87; position: absolute; top: 14.9906px; left: 193.991px; margin-top: -18px;"><div class="formErrorContent">*入力してください<br></div><div class="formErrorArrow"><div class="line10"><!-- --></div><div class="line9"><!-- --></div><div class="line8"><!-- --></div><div class="line7"><!-- --></div><div class="line6"><!-- --></div><div class="line5"><!-- --></div><div class="line4"><!-- --></div><div class="line3"><!-- --></div><div class="line2"><!-- --></div><div class="line1"><!-- --></div></div></div>
+</div>
+```
+*/
+.mw_wp_form {
+  .formError {
+    //JSバリデーション用
+    top: auto !important;
+    left: auto !important;
+    .formErrorContent,
+    .formErrorArrow div {
+      background: #cc0615;
+    }
+    .formErrorArrow .line1,
+    .formErrorArrow .line2 {
+      background: #ddd;
+    }
+  }
+  &:not(.mw_wp_form_input) {
+    .input-content {
+      display: none !important;
+    }
+  }
+  &:not(.mw_wp_form_confirm) {
+    .conf-content {
+      display: none !important;
+    }
+  }
+  .btn-area {
+    //ボタン用
+    padding: 2rem 0 3rem;
+    .md-btn.rivers {
+      /* 戻るボタン */
+      margin: 0 2rem 0 0;
+      @media #{$media-sp} {
+        //SP相当の幅
+        margin: 0 0 1em;
+      } //SP相当の幅
+    }
+  }
+}

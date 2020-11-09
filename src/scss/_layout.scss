@@ -1,0 +1,70 @@
+/*
+ ##      ## ########     ###    ########
+ ##  ##  ## ##     ##   ## ##   ##     ##
+ ##  ##  ## ########  ##     ## ########
+ ##  ##  ## ##   ##   ######### ##
+  ###  ###  ##     ## ##     ## ##
+*/
+body {
+  width: 100%;
+  // min-width: 1200px;
+}
+// ↓SP相当幅
+@media #{$media-sp} {
+  body {
+    // min-width: 100%;
+  }
+  .sp-wrap {
+    padding-right: $pad;
+    padding-left: $pad;
+  }
+}
+// ↑SP相当幅
+// ↓SP以外の幅
+@media #{$media-notsp} {
+  .wrap {
+    margin: 0 auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+// ↑SP以外の幅
+@include pcWrapSize(1200); // PC用ラップサイズ .wrap.w○○○ を生成
+
+/*
+ ######## ######## ##     ## ########
+    ##    ##         ## ##      ##
+    ##    ######      ###       ##
+    ##    ##         ## ##      ##
+    ##    ######## ##     ##    ##
+*/
+//body,button,input,select,textareaのフォント設定
+@include basefont {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: $fontColor;
+}
+
+a {
+  color: $siteColor;
+  text-decoration: none;
+  &:link {
+  }
+  &:visited {
+  }
+  &:hover {
+  }
+  &:active,
+  &:focus {
+  }
+}
+p:not([class]):not(:last-child) {
+  margin-bottom: 1em;
+}
+
+::selection {
+  //選択範囲の装飾設定
+  color: #fff;
+  background: $siteColor;
+}

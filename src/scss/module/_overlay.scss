@@ -1,0 +1,67 @@
+.md-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  cursor: pointer;
+  background: rgba(#000, 0.5);
+  transition-duration: 0.5s;
+  &:not(.active) {
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
+  }
+  &--modal {
+    z-index: 10000;
+  }
+  // 波紋エフェクト型
+  // 画面幅の長辺×1.5の半径を持つ真円にする
+  &--ripple {
+    border-radius: 50%;
+    width: 300vh;
+    height: 300vh;
+    transform: translate(50%, -50%); // positionの座標を円の中心にする
+    // ↓横長
+    @media #{$media-land} {
+      width: 300vw;
+      height: 300vw;
+    }
+    // ↑横長
+    &:not(.active) {
+      // 通常のサイズを0にしておく
+      width: 0;
+      height: 0;
+    }
+  }
+  // 上から落ちてくる
+  &--shutter {
+    height: 200vh; // 高さを2倍にする
+    background-image: linear-gradient(180deg, rgba(#000, 0.5), rgba(#000, 0.5) 50%, rgba(#fff, 0));
+    &:not(.active) {
+      // 通常は上に上げておく
+      transform: translate(0, -100%);
+    }
+  }
+}
+
+/*
+#styleguide
+オーバーレイ .md-overlay
+
+オーバーレイを被せる。「.active」の付与で出現する。
+z-index: 1000;とbackground: rgba(#000, .5);は構成に応じて調整。
+```
+<div id="overlay" class="md-overlay"></div>
+
+<div id="test-overlay" class="md-overlay" onclick="this.classList.toggle('active')"></div>
+<a onclick="document.getElementById('test-overlay').classList.toggle('active')">テスト開閉</a>
+
+<div id="test-overlay-ripple" class="md-overlay md-overlay--ripple" onclick="this.classList.toggle('active')"></div>
+<a onclick="document.getElementById('test-overlay-ripple').classList.toggle('active')">テスト開閉（波紋）</a>
+
+<div id="test-overlay-shutter" class="md-overlay md-overlay--shutter" onclick="this.classList.toggle('active')"></div>
+<a onclick="document.getElementById('test-overlay-shutter').classList.toggle('active')">テスト開閉（シャッター）</a>
+```
+*/

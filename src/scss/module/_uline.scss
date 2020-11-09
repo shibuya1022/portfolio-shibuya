@@ -1,0 +1,50 @@
+.md-uline {
+  position: relative;
+  text-decoration: none;
+  &::before {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 2px;
+    content: "";
+    background: $siteColor;
+    transition-duration: 0.5s;
+    transform: rotateY(90deg);
+    transform-origin: 50%;
+  }
+  &.uline-block {
+    display: block;
+  }
+  &.uline-left::before {
+    transform-origin: 0%;
+  }
+  &.uline-right::before {
+    transform-origin: 100%;
+  }
+}
+a.active .md-uline,
+.md-uline.active,
+a:hover .md-uline,
+.md-uline:hover {
+  text-decoration: none;
+  &:before {
+    transform: rotateY(0deg);
+  }
+}
+
+/*
+#styleguide
+アンダーライン .md-uline
+
+アニメーションでアンダーラインを乗せる。Aタグのホバーか「.active」に反応する。
+```
+<a class="md-uline">テストテストテストテストテストテストテスト1</a>
+<a class="md-uline uline-left">テストテストテストテストテストテストテスト2</a>
+<a class="md-uline uline-right">テストテストテストテストテストテストテスト3</a>
+<a class="md-uline uline-left uline-block">テストテストテストテストテストテストテスト4</a>
+
+```
+*/

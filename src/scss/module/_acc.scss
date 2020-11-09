@@ -1,0 +1,162 @@
+.md-acc {
+  .acc-btn {
+    cursor: pointer;
+  }
+  .acc-check {
+    display: none;
+  }
+  .acc-body {
+    max-height: 0;
+    overflow: hidden;
+    //アコーディオン開閉部分
+    opacity: 0;
+    transition-duration: 0.5s;
+    transform-origin: 0 0;
+    .acc-body:not(.active) {
+      //アコーディオン開閉部分
+      transition-duration: 0s;
+    }
+  }
+  .acc-body:not(.active),
+  .acc-check:not(:checked) ~ .acc-body,
+  .acc-check:not(:checked) ~ .acc-btn {
+    .acc-on {
+      display: none;
+    }
+  }
+
+  .acc-body.active,
+  .acc-check:checked ~ .acc-body,
+  .acc-check:checked ~ .acc-btn {
+    max-height: none;
+    opacity: 1;
+    .acc-off {
+      display: none;
+    }
+  }
+}
+
+/*
+
+          ######  ########           #######  ##    ## ##       ##    ##
+         ##    ## ##     ##         ##     ## ###   ## ##        ##  ##
+         ##       ##     ##         ##     ## ####  ## ##         ####
+ #######  ######  ########  ####### ##     ## ## ## ## ##          ##
+               ## ##                ##     ## ##  #### ##          ##
+         ##    ## ##                ##     ## ##   ### ##          ##
+          ######  ##                 #######  ##    ## ########    ##
+
+SP時のみアコーディオン化させる
+*/
+.sp-md-acc {
+  .acc-check {
+    display: none;
+  }
+  .acc-btn {
+    // ↓SP以外の幅
+    @media #{$media-notsp} {
+      cursor: auto;
+    }
+    // ↑SP以外の幅
+  }
+}
+// ↓SP相当幅
+@media #{$media-sp} {
+  .sp-md-acc {
+    .acc-btn {
+    }
+    .acc-body {
+      max-height: 0;
+      overflow: hidden;
+      //アコーディオン開閉部分
+      opacity: 0;
+      transition-duration: 0.5s;
+      transform-origin: 0 0;
+      .acc-body:not(.active) {
+        //アコーディオン開閉部分
+        transition-duration: 0s;
+      }
+    }
+    .acc-body:not(.active),
+    .acc-check:not(:checked) ~ .acc-body,
+    .acc-check:not(:checked) ~ .acc-btn {
+      .acc-on {
+        display: none;
+      }
+    }
+
+    .acc-body.active,
+    .acc-check:checked ~ .acc-body,
+    .acc-check:checked ~ .acc-btn {
+      max-height: none;
+      opacity: 1;
+      .acc-off {
+        display: none;
+      }
+    }
+  }
+}
+// ↑SP相当幅
+
+/*
+#styleguide
+アコーディオン .md-acc
+
+チェックボックスかJSを利用して開閉できるアコーディオン。
+　
+チェックボックスの場合は固有IDを付けた空のチェックボックス、それに紐付けたラベル、アコーディオンの中身を同じ階層の兄弟要素にすることが必須。
+　
+acc-bodyに「active」を付けることでも開けられるので、JSを使えばbtnとbodyを離せる。
+　
+acc-bodyはacc-btnの中に入れても良い。その場合acc-bodyをクリックしても閉じるアーコディオンになる。
+　
+「sp-md-acc」とするとSP時のみアコーディオン化し、PC時は常に展開状態になる。
+```
+<div class="md-acc">
+  <input id="hogehoge" class="acc-check" type="checkbox" value="" />
+  <label for="hogehoge" class="acc-btn">普通のアコーディオン</label>
+  <div class="acc-body">
+    <img src="https://unsplash.it/300/200?random&n1">
+  </div>
+</div>
+
+<br><br><br>
+
+<div class="md-acc">
+  <input id="hogehogeBody" class="acc-check" type="checkbox" value="" />
+  <label for="hogehogeBody" class="acc-btn">
+  開いた要素の部分をクリックしても閉じるアコーディオン<br>
+  <div class="acc-body">
+    <img src="https://unsplash.it/300/200?random&n2">
+  </div>
+  </label>
+</div>
+
+<br><br><br>
+
+<div class="md-acc">
+  <div id="test-acc-3" class="acc-body">
+    JSで開かれたアコーディオン<br>
+    <img src="https://unsplash.it/300/200?random&n3">
+  </div>
+</div>
+
+<br><br><br>
+
+<div class="sp-md-acc">
+  <input id="spacc" class="acc-check" type="checkbox" value="" />
+  <label for="spacc" class="acc-btn">SPの時だけアコーディオンになる要素</label>
+  <div class="acc-body">
+    <img src="https://unsplash.it/300/200?random&n4">
+  </div>
+</div>
+
+<br><br><br>
+
+<a onclick="document.getElementById('test-acc-3').classList.toggle('active')"><i class="icon fas fa-bars fa-fw"></i>JSで開けるアコーディオン</a>
+
+<br><br><br>
+
+
+```
+*/

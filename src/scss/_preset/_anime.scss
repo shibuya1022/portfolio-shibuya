@@ -1,0 +1,372 @@
+/*
+#overview
+アニメーション
+
+各種アニメーション処理
+*/
+
+$animeActive: "&.active,.anime.active &.chain,&.lock,.swiper-slide-active &";
+
+/*
+ ########    ###    ########  ########
+ ##         ## ##   ##     ## ##
+ ######   ##     ## ##     ## ######
+ ##       ######### ##     ## ##
+ ##       ##     ## ########  ########
+*/
+// .fade-in Commonにまとまっている
+
+/*
+#styleguide
+anime
+「.anime.アニメ名」の形でクラスを当て、.activeがつくと実行される。
+「.anime.アニメ名.key」の形にするとkeyframe版になる。
+keyframe版は始めからactiveが付いていてもアニメーションするが、active除去時はアニメーションしない。
+```
+<div class="flex break ta-center">
+    <div>
+        <button style="position:relative;z-index:2;" onclick="this.nextElementSibling.classList.toggle('active')">通常版切り替え</button>
+        <div class="anime bottom-in">
+            <img src="https://placehold.it/300x300/1D417A/FFFFFF/?text=" alt="">
+        </div>
+    </div>
+    <div>
+        <button style="position:relative;z-index:2;" onclick="this.nextElementSibling.classList.toggle('active')">keyframe版切り替え</button>
+        <div class="anime bottom-in key active">
+            <img src="https://placehold.it/300x300/1D417A/FFFFFF/?text=" alt="">
+        </div>
+    </div>
+</div>
+```
+*/
+
+.body-in {
+  overflow-x: hidden;
+}
+
+.anime {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards; //アニメ開始前後のスタイル [none:維持しない] forwards:最終状態を維持 backwards:開始前から初期状態 both:fb両方
+  &:not(.key) {
+    transition-duration: 0.5s;
+  }
+
+  /*
+ ########    ###    ########  ########
+ ##         ## ##   ##     ## ##
+ ######   ##     ## ##     ## ######
+ ##       ######### ##     ## ##
+ ##       ##     ## ########  ########
+*/
+  // .fade-in Commonにまとまっている
+
+  /*
+#styleguide
+fade
+フェードアニメ
+```
+<div class="flex break ta-center">
+    <div>
+        <button style="position:relative;z-index:2;" onclick="this.nextElementSibling.classList.toggle('active')">切り替え</button>
+        <div class="anime fade-in">
+            <img src="https://placehold.it/300x300/1D417A/FFFFFF/?text=" alt="">
+        </div>
+    </div>
+</div>
+```
+*/
+
+  /*
+ ######## ##       #### ########
+ ##       ##        ##  ##     ##
+ ######   ##        ##  ########
+ ##       ##        ##  ##
+ ##       ######## #### ##
+*/
+  &.flip-x {
+    transform: rotateX(90deg);
+  }
+  &.flip-y {
+    transform: rotateY(90deg);
+  }
+
+  /*
+#styleguide
+flip-x flip-y
+フリップアニメ　X軸回転とY軸回転
+```
+<div class="flex break ta-center">
+    <div>
+        <button style="position:relative;z-index:2;" onclick="this.nextElementSibling.classList.toggle('active')">flip-x</button>
+        <div class="anime flip-x">
+            <img src="https://placehold.it/300x300/1D417A/FFFFFF/?text=" alt="">
+        </div>
+    </div>
+    <div>
+        <button style="position:relative;z-index:2;" onclick="this.nextElementSibling.classList.toggle('active')">flip-y</button>
+        <div class="anime flip-y">
+            <img src="https://placehold.it/300x300/1D417A/FFFFFF/?text=" alt="">
+        </div>
+    </div>
+</div>
+```
+*/
+
+  /*
+ ########  #######   #######  ##     ##
+     ##   ##     ## ##     ## #### ####
+    ##    ##     ## ##     ## ## ### ##
+   ##     ##     ## ##     ## ##     ##
+ ########  #######   #######  ##     ##
+*/
+  &.zoom-in {
+    transform: scale(0);
+  }
+
+  /*
+#styleguide
+zoom-in
+ズームアニメ
+```
+<div class="flex break ta-center">
+    <div>
+        <button style="position:relative;z-index:2;" onclick="this.nextElementSibling.classList.toggle('active')">切り替え</button>
+        <div class="anime zoom-in">
+            <img src="https://placehold.it/300x300/1D417A/FFFFFF/?text=" alt="">
+        </div>
+    </div>
+</div>
+```
+*/
+
+  /*
+  ######  ##       #### ########  ########         #### ##    ##
+ ##       ##        ##  ##     ## ##                ##  ####  ##
+  ######  ##        ##  ##     ## ######   #######  ##  ## ## ##
+       ## ##        ##  ##     ## ##                ##  ##  ####
+  ######  ######## #### ########  ########         #### ##    ##
+*/
+  $slideInX: 50px;
+  $slideInY: 50px;
+  &.top-in {
+    transform: translateY(-$slideInY);
+    transform-origin: 0 0;
+  }
+  &.bottom-in {
+    transform: translateY($slideInY);
+  }
+  &.left-in {
+    transform: translateX(-$slideInX);
+  }
+  &.right-in {
+    transform: translateX($slideInX);
+  }
+
+  /*
+#styleguide
+top-in bottom-in left-in right-in
+スライドアニメ
+```
+<div class="flex break ta-center">
+    <div>
+        <button style="position:relative;z-index:2;" onclick="this.nextElementSibling.classList.toggle('active')">top-in</button>
+        <div class="anime top-in">
+            <img src="https://placehold.it/300x300/1D417A/FFFFFF/?text=" alt="">
+        </div>
+    </div>
+    <div>
+        <button style="position:relative;z-index:2;" onclick="this.nextElementSibling.classList.toggle('active')">bottom-in</button>
+        <div class="anime bottom-in">
+            <img src="https://placehold.it/300x300/1D417A/FFFFFF/?text=" alt="">
+        </div>
+    </div>
+    <div>
+        <button style="position:relative;z-index:2;" onclick="this.nextElementSibling.classList.toggle('active')">left-in</button>
+        <div class="anime left-in">
+            <img src="https://placehold.it/300x300/1D417A/FFFFFF/?text=" alt="">
+        </div>
+    </div>
+    <div>
+        <button style="position:relative;z-index:2;" onclick="this.nextElementSibling.classList.toggle('active')">right-in</button>
+        <div class="anime right-in">
+            <img src="https://placehold.it/300x300/1D417A/FFFFFF/?text=0" alt="">
+        </div>
+    </div>
+</div>
+```
+*/
+
+  /*
+  ######   #######  ##     ## ##     ##  #######  ##    ##
+ ##       ##     ## #### #### #### #### ##     ## ####  ##
+ ##       ##     ## ## ### ## ## ### ## ##     ## ## ## ##
+ ##       ##     ## ##     ## ##     ## ##     ## ##  ####
+  ######   #######  ##     ## ##     ##  #######  ##    ##
+*/
+  // opacity + transformで完結するアニメ全般の共通設定
+
+  @keyframes transform-purge {
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  &.fade-in,
+  &.flip-x,
+  &.flip-y,
+  &.zoom-in,
+  &.top-in,
+  &.bottom-in,
+  &.left-in,
+  &.right-in {
+    opacity: 0;
+    #{$animeActive} {
+      &:not(.key) {
+        opacity: 1;
+        transform: none;
+      }
+      &.key {
+        animation-name: transform-purge;
+      }
+    }
+  }
+
+  /*
+ ######## ##     ## ########     ###    ##    ## ########
+ ##         ## ##   ##     ##  ##   ##  ####  ## ##     ##
+ ######      ###    ########  ##     ## ## ## ## ##     ##
+ ##         ## ##   ##        ######### ##  #### ##     ##
+ ######## ##     ## ##        ##     ## ##    ## ########
+*/
+
+  /*
+#styleguide
+expand-x expand-y
+伸縮アニメ
+max-widthとmax-heightを変えているため、そのまま使うとレイアウトに影響がある。例でもボタンが動いてしまう。
+absoluteにするなど工夫が必要。
+またexpand-x内の画像は、画像にデフォルトで入っているmax-width:100%を解除する必要がある。
+```
+<div class="flex break ta-center">
+    <div>
+        <button style="position:relative;z-index:2;" onclick="this.nextElementSibling.classList.toggle('active')">expand-x</button>
+        <div class="anime expand-x">
+            <img style="max-width:300px" src="https://placehold.it/300x300/1D417A/FFFFFF/?text=" alt="">
+        </div>
+    </div>
+    <div>
+        <button style="position:relative;z-index:2;" onclick="this.nextElementSibling.classList.toggle('active')">expand-y</button>
+        <div class="anime expand-y">
+            <img src="https://placehold.it/300x300/1D417A/FFFFFF/?text=" alt="">
+        </div>
+    </div>
+
+</div>
+```
+*/
+
+  @keyframes expand-x {
+    100% {
+      max-width: 100%;
+      white-space: normal;
+      opacity: 1;
+    }
+  }
+  @keyframes expand-y {
+    100% {
+      max-height: 100%;
+      white-space: normal;
+    }
+  }
+  &.expand-x {
+    width: auto;
+    max-width: 0;
+    #{$animeActive} {
+      &:not(.key) {
+        max-width: 100%;
+        white-space: normal;
+      }
+      &.key {
+        animation-name: expand-x;
+      }
+    }
+  }
+
+  &.expand-y {
+    height: auto;
+    max-height: 0;
+    #{$animeActive} {
+      &:not(.key) {
+        max-height: 100%;
+        white-space: normal;
+      }
+      &.key {
+        animation-name: expand-y;
+      }
+    }
+  }
+  &.expand-x,
+  &.expand-y {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /*
+             ########  ##       ##     ## ########
+             ##     ## ##       ##     ## ##     ##
+             ########  ##       ##     ## ########
+             ##     ## ##       ##     ## ##    ##
+             ########  ########  #######  ##     ##
+*/
+
+  /*
+#styleguide
+blur
+ぼかしアニメ
+IEは非対応。代わりにフェードアニメになる。
+```
+<div class="flex break ta-center">
+    <div>
+        <button style="position:relative;z-index:2;" onclick="this.nextElementSibling.classList.toggle('active')">blur</button>
+        <div class="anime blur">
+            <img style="max-width:none;" src="https://placehold.it/300x300/1D417A/FFFFFF/?text=" alt="">
+        </div>
+    </div>
+</div>
+```
+*/
+
+  @keyframes focus-in {
+    100% {
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
+  &.blur {
+    opacity: 0;
+    #{$animeActive} {
+      &:not(.key) {
+        opacity: 1;
+      }
+      &.key {
+        animation-name: transform-purge;
+      }
+    }
+  }
+  // ↓プロパティをサポートしている場合のみ
+  $blurIn: blur(12px);
+  @supports (filter: $blurIn) {
+    &.blur {
+      filter: $blurIn;
+      #{$animeActive} {
+        &:not(.key) {
+          filter: blur(0);
+        }
+        &.key {
+          animation-name: focus-in;
+        }
+      }
+    }
+  }
+  // ↑プロパティをサポートしている場合のみ
+}
