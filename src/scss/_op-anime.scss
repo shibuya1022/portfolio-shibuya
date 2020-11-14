@@ -1,0 +1,130 @@
+@keyframes OpAnime {
+  0% {
+    pointer-events: initial;
+    opacity: 1;
+  }
+  80% {
+    pointer-events: initial;
+    opacity: 1;
+  }
+  100% {
+    pointer-events: none;
+    opacity: 0;
+  }
+}
+@keyframes opttl {
+  0% {
+    color: #ffc93c;
+    text-shadow: 0.4rem 0.4rem 0.4rem transparent, -0.4rem -0.4rem 0.4rem transparent;
+  }
+  100% {
+    color: #204495;
+    text-shadow: 0.4rem 0.4rem 0.4rem #999, -0.4rem -0.4rem 0.4rem #fff;
+  }
+}
+@keyframes cloud {
+  0% {
+    top: 30%;
+  }
+
+  100% {
+    top: 28%;
+  }
+}
+@keyframes cloud02 {
+  0% {
+    top: 30%;
+  }
+
+  100% {
+    top: 28.5%;
+  }
+}
+
+@keyframes truck {
+  0% {
+    right: -10rem;
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    right: 90%;
+    opacity: 0;
+  }
+}
+@keyframes smoke {
+  0% {
+    left: -2rem;
+    opacity: 1;
+  }
+  100% {
+    left: -1rem;
+    opacity: 0;
+  }
+}
+
+#Op--Animetion {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background: #ffc93c;
+  opacity: 1;
+  animation: 5s linear 0s forwards OpAnime;
+  .OpAnime--ttl {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    z-index: 1000;
+    padding: 1rem;
+    font-size: 10rem;
+    font-weight: bold;
+    color: #ffc93c;
+    text-shadow: 0.4rem 0.4rem 0.4rem transparent, -0.4rem -0.4rem 0.4rem transparent;
+    letter-spacing: 0.3rem;
+    white-space: nowrap;
+    transform: translateX(-50%);
+    animation: 2s ease 0.3s forwards opttl;
+  }
+  .icon-cloud {
+    position: absolute;
+    top: 30%;
+    left: -23%;
+    font-size: 22rem;
+    color: #204495;
+    text-shadow: 0.3rem 0.3rem 0.3rem #999, -0.3rem -0.3rem 0.3rem #fff;
+    animation: 1s linear infinite alternate cloud;
+    &.-no2 {
+      top: 30%;
+      right: -23%;
+      left: auto;
+      font-size: 17rem;
+      animation: 1s linear infinite alternate cloud02;
+    }
+  }
+  .truck {
+    position: absolute;
+    top: -6.2rem;
+    right: -10rem;
+    opacity: 1;
+    animation: 4s ease 0.3s forwards truck;
+    .icon-truck {
+      font-size: 8rem;
+      color: #6495ed;
+      text-shadow: 0.3rem 0.3rem 0.3rem #999, -0.3rem -0.3rem 0.3rem #fff;
+    }
+    .icon-smoke {
+      position: relative;
+      left: -2rem;
+      font-size: 3rem;
+      color: #e0e5ec;
+      text-shadow: 0.3rem 0.3rem 0.3rem #999, -0.3rem -0.3rem 0.3rem #fff;
+      opacity: 1;
+      animation: 1.5s ease 0s infinite smoke;
+    }
+  }
+}

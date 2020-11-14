@@ -8,9 +8,9 @@
     z-index: 5;
     display: block;
     width: 100%;
-    height: 2px;
+    height: 4px;
     content: "";
-    background: $siteColor;
+    background: linear-gradient(to right, #8e9eab, #ddd);
     transition-duration: 0.5s;
     transform: rotateY(90deg);
     transform-origin: 50%;

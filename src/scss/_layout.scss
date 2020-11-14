@@ -8,6 +8,7 @@
 body {
   width: 100%;
   // min-width: 1200px;
+  background: #ffc93c;
 }
 // ↓SP相当幅
 @media #{$media-sp} {
@@ -30,7 +31,7 @@ body {
 }
 // ↑SP以外の幅
 @include pcWrapSize(1200); // PC用ラップサイズ .wrap.w○○○ を生成
-
+@include pcWrapSize(1400);
 /*
  ######## ######## ##     ## ########
     ##    ##         ## ##      ##
