@@ -8,28 +8,7 @@ https://git-scm.com/
 
 OS は Windows を想定。
 
-## その他環境
-
-上記必要環境を満たしていても、パッケージインストール時にエラーログが出る。  
-ただし代替パッケージが自動でインストールされるため、npm ci 自体が完了していれば挙動に違いはない。  
-以下を追加導入するとエラーが減少する（該当パッケージの作者によると、Windows 環境はエラーを潰しきれないとのこと）。
-
-Python  
-https://www.python.jp/
-
-Visual C++
-どのパッケージを入れるか聞かれるので、「Visual C++ Build Tools」を選択する。
-https://visualstudio.microsoft.com/ja/thank-you-downloading-visual-studio/?sku=BuildTools&rr=https%3A%2F%2Fgithub.com%2Fnodejs%2Fnode-gyp
-
 # インストール・実行
-
-## タスクランナーリポジトリから作業対象リポジトリに設置する時のみの作業
-
-「ルート階層にあるファイル全部」「src」「\_npm-scripts」を作業リポジトリに丸ごとコピーする。  
-※その他のディレクトリは各自でタスクランナーを試運転した場合に発生する生成物なので入れないこと。  
-※README は導入先リポジトリにも存在すると思われるが、上書きするかは任意。
-
-![1557284341-001](https://user-images.githubusercontent.com/12805640/57346298-eb60ee80-7188-11e9-96f1-3fc96c5ef779.png)
 
 ## インストール
 
@@ -53,10 +32,15 @@ VS Code
 
 |   拡張機能   |                                      URL                                       | 説明                                        |
 | :----------: | :----------------------------------------------------------------------------: | :------------------------------------------ |
-| EditorConfig | https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig  | インデント等の体裁統一                      |
-|  stylelint   | https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint | CSS,SCSS の構文チェック・一部記述の自動修正 |
-|    ESLint    |   https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint   | JS の構文チェック                           |
-|   Prettier   |   https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode   | JS,SCSS のコードフォーマット                |
+| Banner Comments +  | コメントアウト用テキスト生成                      |
+|  stylelint | CSS,SCSS の構文チェック・一部記述の自動修正 |
+|  Bracket Pair Colorizer 2 | 対応する｛｝を表示 |
+|  Highlight Matching Tag | 対応するタグ表示 |
+|  indent-rainbow | インデントを装飾 |
+| Japanese Language Pack for Visual Studio Code | 日本人なので |
+|  indent-rainbow | インデントを装飾 |
+|    ESLint  | JS の構文チェック                           |
+|   Prettier | JS,SCSS のコードフォーマット                |
 | PHP cs fixer |   https://marketplace.visualstudio.com/items?itemName=junstyle.php-cs-fixer    | PHP のコードフォーマット                    |
 
 ---
@@ -65,38 +49,71 @@ VS Code
 
 以下を VS Code の JSON 設定ファイルに追記
 
-    "php-cs-fixer.formatHtml": true,
-    "php-cs-fixer.onsave": true,
-    "php-cs-fixer.rules": "@PSR2",
-    "php.validate.executablePath": "C:/php/php.exe",
-    "files.associations": {
-      "*.html": "php"
-    },
+    {
+  "editor.fontFamily": "HackGen",
+  "editor.formatOnSaveTimeout": 5000,
+  "php-cs-fixer.executablePath": "C:/Users/admin/.vscode/php-cs-fixer.phar",
+  "php-cs-fixer.lastDownload": 1585537798187,
+  "php.validate.executablePath": "C:/php/php.exe",
+  "php-cs-fixer.formatHtml": true,
+  "php-cs-fixer.onsave": true,
+  "php-cs-fixer.rules": "@PSR2",
+  "files.associations": {
+    "*.html": "php"
+  },
+  "editor.formatOnSave": true,
+  "[apacheconf]": {},
+  "[ejs]": {
+    "editor.autoClosingQuotes": "always",
+    "editor.autoSurround": "quotes"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true,
+    "source.fixAll.eslint": true
+  },
+  "window.zoomLevel": 0,
+  "editor.fontSize": 12,
+  "banner-comments-plus.customFonts": [],
+  "banner-comments-plus.font": "Banner3",
+  "banner-comments-plus.trimEmptyLines": true,
+  "banner-comments-plus.trimTrailingWhitespace": true,
+  "files.autoSave": "off",
+  "css.lint.emptyRules": "ignore",
+  "workbench.startupEditor": "newUntitledFile"
+}
+
 
 PHP cs Fixer を動かすために、PHP を実行可能にしておく必要がある。  
 以下からダウンロードし、上記設定記述の「C:/php/php.exe」でアクセス可能にしておくこと。
 https://windows.php.net/download
 
-# 想定用途
+# WP テーマ開発
 
-## 「Local by Flywheel」と併用して WP テーマ開発
+## 「Local by Flywheel」を使用する
 
 ローカル WP のテーマディレクトリをリポジトリにすることで、BrowserSync も使える
 
-Flywheel はアドオンで各種ディレクトリのパスを変えられるので、テーマディレクトリが深すぎて扱いづらい問題はこちらで対応  
-<https://b.0218.jp/20170111005914.html>  
-※変更先は Flywheel と同一のドライブに限る。別ドライブの場合は何かを諦めるか、別のソフトでシンボリックリンクを作る
+シンボリックリンク
+mklink /D "C:\Users\admin\Desktop\テーマ名" "C:\Users\admin\Desktop\リポジトリ\テーマフォルダ\テーマ名"右はフルパス
 
-「MORE→Volumes」より以下を設定  
-・Add Host Source  
 　開発テーマのパス  
 ・Add Container Destination  
 　/app/public/wp-content/themes/テーマ名
-
-## EJS で静的サイト開発
-
-PHP と同じ要領で静的サイト制作が実施可能。  
-変数を使ったり、ヘッダー等のパーツを分けて管理したりできる。
 
 # 処理内容
 
@@ -162,34 +179,6 @@ Infinite Scroll（Ajax による無限スクロール）
 メイン CSS 位置は「css/common.css」。「\_」から始まらない名称の SCSS ファイルを作ることで、common.css 以外のファイルも別途生成可能。  
 スタイルガイドは速度的な都合から、監視タスクでも初回のみ実行する。
 
-## .jpg,.png,gif,.svg(src/img)
-
-圧縮する。フォルダを分けた場合、出力先でもフォルダ分けが行われる。
-
-画質が粗い場合は config.js の「quality」を上げる。  
-圧縮を行いたくない画像に対しては、後述のコピータスクを利用すると良い。
-
-config.js で設定を変えると、JPG と PNG は WebP を並行生成可能。  
-WebP は Safari の対応が遅く、IE は確実にフォールバックが必要になるが、軽量。  
-https://caniuse.com/#search=WebP
-「test.jpg」というファイルを加工した場合、圧縮した「test.jpg」と WebP にした「test.jpg.webp」が生成される。
-
-## .svg (src/img/icon)
-
-SVG からアイコンフォントを生成する。以下でアイコンフォントが出てくるようになる。  
-アイコンフォント化に向かない SVG を加工させると、アイコンが正常に出力されないことがあるので、適切な SVG のみ入れること。
-
-    <i class="icon-ファイル名"></i>
-
-アイコンフォントにならない場合は SVG のソースを見る。ラスタ画像が入っていたら無理。2 色以上使っている SVG も、仮にフォント化出来ても配色は再現できない。
-
-適合しているのにフォントにならない場合は、SVG を IcoMoon にアップして、 SVG を落とし直すと直る場合がある。
-<https://icomoon.io/app/#/select>
-
-SVG をフリーの範囲で加工したい場合、Inkscape が有効。  
-二種類の SVG をかけ合わせた、複合アイコンのフォントなども作れる。  
-<https://inkscape.org/ja/>
-
 ## コピー対象ファイル(src/\_copy 　例外あり)
 
 加工を行わずにそのまま出力させる。  
@@ -223,4 +212,3 @@ SVG をフリーの範囲で加工したい場合、Inkscape が有効。
 
     npm run restart
 
-clean のリスクを把握した上でなら、restart 一本でも特に問題ない。
