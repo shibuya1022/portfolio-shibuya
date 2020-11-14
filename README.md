@@ -41,7 +41,7 @@ VS Code
 |  indent-rainbow | インデントを装飾 |
 |    ESLint  | JS の構文チェック                           |
 |   Prettier | JS,SCSS のコードフォーマット                |
-| PHP cs fixer |   https://marketplace.visualstudio.com/items?itemName=junstyle.php-cs-fixer    | PHP のコードフォーマット                    |
+| PHP cs fixer |  PHP のコードフォーマット                    |
 
 ---
 
