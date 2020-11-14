@@ -89,4 +89,4 @@ require_once 'sidebar.php';
         </section>
     </article>
 </div>
-<?php get_footer();
+<?php get_footer();?>
