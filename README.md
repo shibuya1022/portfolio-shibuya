@@ -49,8 +49,8 @@ VS Code
 
 以下を VS Code の JSON 設定ファイルに追記
 
-    {
-  "editor.fontFamily": "HackGen",
+    
+ {"editor.fontFamily": "HackGen",
   "editor.formatOnSaveTimeout": 5000,
   "php-cs-fixer.executablePath": "C:/Users/admin/.vscode/php-cs-fixer.phar",
   "php-cs-fixer.lastDownload": 1585537798187,
