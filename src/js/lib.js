@@ -3,7 +3,7 @@
 
 import 'expose-loader?jQuery!jquery' // jQuery
 
-// import 'expose-loader?Cookies!js-cookie' // Cookie
+import 'expose-loader?Cookies!js-cookie' // Cookie
 
 // import 'expose-loader?React!react' // React
 // import 'expose-loader?ReactDOM!react-dom' // ReactDOM
@@ -17,7 +17,7 @@ import 'expose-loader?jQuery!jquery' // jQuery
 
 // import 'expose-loader?YTPlayer!jquery.mb.ytplayer' // YTPlayer
 
-// import 'trunk8' // Trunk8
+import 'trunk8' // Trunk8
 
 // import 'expose-loader?Stickyfill!stickyfilljs' // position:styckyのポリフィル
 
