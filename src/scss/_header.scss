@@ -8,14 +8,14 @@ $headerSP: 6rem;
   left: 50%;
   z-index: 1000;
   width: 80%;
-  min-width: 88rem;
+  min-width: 102rem;
   white-space: nowrap;
   transform: translateX(-50%);
   &__frame {
     padding: 0 10rem 0 7rem;
-    background: #ffc93c;
+    background: #abd1c6;
     border-radius: 10rem;
-    box-shadow: -1rem -1rem 1rem #f7db95, 0.6rem 0.6rem 0.5rem #e4ad24;
+    box-shadow: -0.6rem -0.6rem 0.6rem #bddfd5, 0.6rem 0.6rem 0.5rem #96bbb0;
   }
   &__base {
   }
@@ -28,12 +28,15 @@ $headerSP: 6rem;
   &__logo-text {
     font-size: 4.6rem;
     font-weight: bold;
-    color: #204495;
-    text-shadow: 1px 1px 1px #c9cacf, 2px 2px 2px #ddd, 3px 3px 2px #666;
+    color: #001e1d;
+    // text-shadow: 1px 1px 1px #c9cacf, 2px 2px 2px #ddd, 3px 3px 2px #666;
     letter-spacing: 0.2rem;
   }
   &__nav {
     margin-right: 1rem;
+  }
+  @media screen and(min-width:768px) and(max-width:1080px) {
+    min-width: 82rem;
   }
   /*
                ######  ########
@@ -44,11 +47,14 @@ $headerSP: 6rem;
   */
   // ↓sp相当幅
   @media #{$media-sp} {
-    max-height: 100%;
-    overflow: auto;
-
+    top: 0.8rem;
+    width: 96%;
+    min-width: 96%;
+    max-height: 96%;
     &__frame {
-      padding: 0;
+      padding: 1rem 1.5rem 1rem 1rem;
+      border-radius: 1rem;
+      box-shadow: -0.5rem -0.5rem 0.5rem #bddfd5, 0.3rem 0.3rem 2.5rem #96bbb0;
     }
     &__base {
     }
@@ -58,6 +64,11 @@ $headerSP: 6rem;
       max-width: 12rem;
     }
     &__logo-text {
+      font-size: 2.8rem;
+      font-weight: bold;
+      color: #001e1d;
+      text-shadow: 1px 1px 1px #c9cacf, 2px 2px 2px #ddd, 3px 3px 2px #666;
+      letter-spacing: 0.2rem;
     }
     &__nav {
     }
@@ -80,7 +91,7 @@ $headerSP: 6rem;
     font-size: 2.2rem;
     font-weight: bold;
     line-height: 1;
-    color: #204495;
+    color: #001e1d;
     text-shadow: 1px 1px 1px #c9cacf, 2px 2px 2px #ddd, 3px 3px 1px #888;
     letter-spacing: 0.2rem;
     cursor: pointer;
@@ -88,6 +99,10 @@ $headerSP: 6rem;
     &__mini {
       display: block;
       font-size: 1.4rem;
+      @media #{$media-sp} {
+        padding: 0 0.5rem;
+        font-size: 1.3rem;
+      }
     }
     &-Txt {
       display: block;
@@ -134,14 +149,13 @@ $headerSP: 6rem;
 */
 .spNav {
   position: fixed;
-  top: $headerSP;
+  top: 9rem;
   left: 0;
   z-index: 1000;
   width: 100%;
   max-height: calc(100% - #{$headerSP});
+  padding: 1rem 0;
   overflow-y: auto;
-
-  background: #00f;
   transition-duration: 0.5s;
   transform-origin: 0 0;
   // ↓SP以外の幅
@@ -154,15 +168,26 @@ $headerSP: 6rem;
     transform: rotateX(90deg);
   }
   &__list {
+    padding: 0 3.125%;
+  }
+  &__box {
+    margin: 0 0 1.5rem;
   }
   &__item {
+    position: relative;
     padding: 1.5rem;
-    font-weight: 500;
-    color: #fff;
-    background: #00f;
-    border-bottom: 1px solid #f00;
-    &--sub {
-      background: #00ffff;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #001e1d;
+    text-shadow: 1px 1px 1px #ccc, 2px 2px 1px #ccc, 2px 2px 0px #666;
+    background: #abd1c6;
+    border-radius: 1rem;
+    box-shadow: -0.5rem -0.5rem 0.5rem #bddfd5, 0.4rem 0.4rem 0.3rem #96bbb0;
+    .icon-allow {
+      position: absolute;
+      top: 50%;
+      right: 2.3rem;
+      transform: translateY(-50%);
     }
   }
 
@@ -213,19 +238,21 @@ $headerSP: 6rem;
 .spMenuBtn {
   $btnSize: $headerSP; //ボタン一辺の長さ
   $bar: 3px; //バーの太さ
-  $posX: 1.5rem; //バーの左右の余白
-  $posY: 1.75rem; //1,3本目のバーの上下の余白
+  $posX: 1.3rem; //バーの左右の余白
+  $posY: 1.55rem; //1,3本目のバーの上下の余白
   $barRadius: 0; //バーの角丸
   $barOffBG: #fff; //バーの背景OFF時
   $barOnBG: #fff; //バーの背景ON時
   $time: 0.5s; //アニメ時間　0.1s以上
   position: relative;
   display: inline-block;
-  width: $btnSize;
-  height: $btnSize;
+  width: 5rem;
+  height: 5rem;
   vertical-align: middle;
   cursor: pointer;
-  background: $siteColor;
+  background: #004643;
+  border-radius: 100%;
+  box-shadow: -0.5rem -0.5rem 0.7rem #bddfd5, 0.6rem 0.6rem 0.5rem #96bbb0;
   &__box {
     position: absolute;
     top: 0;

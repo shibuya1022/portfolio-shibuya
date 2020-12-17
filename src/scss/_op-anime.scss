@@ -15,11 +15,11 @@
 @keyframes opttl {
   0% {
     color: #ffc93c;
-    text-shadow: 0.4rem 0.4rem 0.4rem transparent, -0.4rem -0.4rem 0.4rem transparent;
+    text-shadow: 0.5rem 0.5rem 0.5rem transparent, -0.5rem -0.5rem 0.5rem transparent;
   }
   100% {
     color: #204495;
-    text-shadow: 0.4rem 0.4rem 0.4rem #999, -0.4rem -0.4rem 0.4rem #fff;
+    text-shadow: 0.5rem 0.5rem 0.5rem #999, -0.5rem -0.5rem 0.5rem #fff;
   }
 }
 @keyframes cloud {
@@ -74,7 +74,8 @@
   height: 100%;
   background: #ffc93c;
   opacity: 1;
-  animation: 5s linear 0s forwards OpAnime;
+  animation: 4.2s linear 0s forwards OpAnime;
+
   .OpAnime--ttl {
     position: absolute;
     top: 30%;
@@ -84,26 +85,37 @@
     font-size: 10rem;
     font-weight: bold;
     color: #ffc93c;
-    text-shadow: 0.4rem 0.4rem 0.4rem transparent, -0.4rem -0.4rem 0.4rem transparent;
+    text-shadow: 0.5rem 0.5rem 0.5rem transparent, -0.5rem -0.5rem 0.5rem transparent;
     letter-spacing: 0.3rem;
     white-space: nowrap;
     transform: translateX(-50%);
     animation: 2s ease 0.3s forwards opttl;
+    @media #{$media-sp} {
+      font-size: 4rem;
+    }
   }
   .icon-cloud {
     position: absolute;
-    top: 30%;
-    left: -23%;
-    font-size: 22rem;
+    top: 20%;
+    left: -27%;
+    font-size: 25rem;
     color: #204495;
-    text-shadow: 0.3rem 0.3rem 0.3rem #999, -0.3rem -0.3rem 0.3rem #fff;
-    animation: 1s linear infinite alternate cloud;
+    text-shadow: 0.5rem 0.5rem 0.5rem #888, -0.5rem -0.5rem 0.5rem #fff;
+    // animation: 1s linear infinite alternate cloud;
+    @media #{$media-sp} {
+      top: 40%;
+      left: -4.5rem;
+      font-size: 9rem;
+    }
     &.-no2 {
       top: 30%;
-      right: -23%;
+      right: -20%;
       left: auto;
-      font-size: 17rem;
-      animation: 1s linear infinite alternate cloud02;
+      font-size: 15rem;
+      // animation: 1s linear infinite alternate cloud02;
+      @media #{$media-sp} {
+        font-size: 8rem;
+      }
     }
   }
   .truck {
@@ -112,10 +124,16 @@
     right: -10rem;
     opacity: 1;
     animation: 4s ease 0.3s forwards truck;
+    @media #{$media-sp} {
+      top: -2.7rem;
+    }
     .icon-truck {
       font-size: 8rem;
       color: #6495ed;
       text-shadow: 0.3rem 0.3rem 0.3rem #999, -0.3rem -0.3rem 0.3rem #fff;
+      @media #{$media-sp} {
+        font-size: 5rem;
+      }
     }
     .icon-smoke {
       position: relative;

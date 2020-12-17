@@ -1,5 +1,95 @@
 .footer {
-  width: 80%;
-  min-width: 70rem;
-  margin: 0 auto;
+  max-width: 120rem;
+  padding: 4rem 4rem 4rem 8rem;
+  margin: 5rem auto;
+  border-radius: 5rem;
+  box-shadow: inset -1rem -1rem 1rem #bddfd5, inset 0.6rem 0.6rem 0.5rem #96bbb0;
+  a {
+    color: #001e1d;
+  }
+  @media #{$media-sp} {
+    width: 94%;
+    max-width: auto;
+    padding: 2rem 2rem;
+    margin: 3rem auto;
+    border-radius: 1rem;
+  }
+  .data-area {
+    .logo {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #001e1d;
+      text-shadow: 1px 1px 1px #c9cacf, 2px 2px 2px #ddd, 3px 3px 2px #666;
+      letter-spacing: 0.2rem;
+      @media #{$media-sp} {
+        padding: 0 0 1rem;
+        a {
+          display: block;
+          text-align: center;
+        }
+      }
+    }
+  }
+  &__copy {
+    padding: 1rem 0 0 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #001e1d;
+    @media #{$media-sp} {
+      padding: 1.5rem 0 0 0;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+  }
+  .right {
+    font-weight: bold;
+    a {
+      position: relative;
+      display: block;
+      padding: 0 2rem;
+      margin: 0 4.5rem 0 0;
+      text-shadow: 1px 1px 1px #bddfd5, 2px 2px 2px #ddd, 3px 3px 1px #888;
+      @media #{$media-sp} {
+        padding: 0 1rem;
+        margin: 0;
+        text-shadow: 1px 1px 1px #c9cacf, 2px 2px 0px #888;
+      }
+      .icon-arrow {
+        position: absolute;
+        top: 50%;
+        right: -1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.2rem;
+        height: 2.2rem;
+        padding: 0 0 0 0.2rem;
+        font-size: 1.2rem;
+        text-shadow: none;
+        content: "";
+        background: #bddfd5;
+        border: solid 2px #001e1d;
+        border-radius: 100%;
+        box-shadow: -0.6rem -0.6rem 0.6rem #bddfd5, 0.6rem 0.6rem 0.5rem #96bbb0;
+        transform: translateY(-50%);
+        @media #{$media-sp} {
+          right: 1rem;
+        }
+      }
+    }
+    &--Txt {
+      @media #{$media-sp} {
+        width: 50%;
+        padding: 0 0 1rem;
+      }
+    }
+    .Bigtxt {
+      font-size: 1.8rem;
+      line-height: 1.5;
+      letter-spacing: 0.2rem;
+    }
+    .Minitxt {
+      font-size: 1.3rem;
+    }
+  }
 }

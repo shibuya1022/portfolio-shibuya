@@ -50,7 +50,7 @@
                 $tax_query = get_categories(array(
                     'type' => $post_type,  //投稿タイプ
                     'taxonomy' => $tax_name,  //対象タクソノミー
-                    'parent' => 0,  //指定IDの子タームだけサーチ　0で親だけサーチ
+                    // 'parent' => 0,  //指定IDの子タームだけサーチ　0で親だけサーチ
                     'orderby' => '',
                     'order' => 'ASC',  //昇順
                     'hide_empty' => true,  //投稿がないタクソノミーを無視するか
@@ -58,10 +58,10 @@
                 $count = 1;
                 foreach ((array) $tax_query as $tax) {
                     $tax_link = get_term_link($tax->cat_ID, $tax_name);  //タームのリンクを取得
-                    if (!$tax->parent) {
+                    if ($tax) {
                 ?>
 
-                                <a class="blog-side__tag" href="<?php echo $tax_link; ?>">
+                                <a class="blog-side__tag <?php if($tax->parent){ ?>child<?php } ?>" href="<?php echo $tax_link; ?>">
                                     <span class="js-t8 line1">
                                         <?php echo $tax->name; ?>&nbsp;&nbsp;(
                                         <?php echo $tax->count; ?>&nbsp;)
@@ -80,11 +80,12 @@
                             <?php
                 if (function_exists('wpp_get_mostpopular')) {
                     wpp_get_mostpopular(array(
-                        'limit' => 5,
-                        'range' => 'last7days',
+                        'limit' => 10,
+                        'range' => 'all',
                         'thumbnail_width' => '100', //サムネイルの幅
                         'thumbnail_height' => '100', //サムネイルの高さ
-                        'title_length' => '20', //サムネイルの高さ
+                        'title_length' => '100', //サムネイルの高さ
+                        'post_html' => '<li><div class="thumbimg">{thumb}</div><div class="js-t8 line3">{title}</div><a href="{url}" class="viewTxt">詳しく見る →</a></li>'
                     ));
                 }
                 ?>
@@ -92,13 +93,21 @@
                         <div class="blog-side__head popttl">
                             <h2 class="title ta-center">人気なカテゴリー</h2>
                         </div>
-                        <div>
+                        <div class="cateVer">
                             <?php
-                if (function_exists('wpp_get_mostpopular')) {
-                    wpp_get_mostpopular(array(
+                            if (function_exists('wpp_get_mostpopular')) {
+                                $args = array(
+                                    'limit' => 10,
+                        'range' => 'last30days',
                         'stats_category' => 1,
-                        'post_html' => '<div>{category}</div>'
-                    ));
+                        'post_html' => '<li class="blog-side__tag wppV">{category}</li>'
+                                );
+
+                            }
+                            ?>
+                                <?php
+                if (function_exists('wpp_get_mostpopular')) {
+                    wpp_get_mostpopular($args);
                 }
                 ?>
                         </div>

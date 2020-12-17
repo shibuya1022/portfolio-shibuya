@@ -1,0 +1,81 @@
+// 下層ページの共通要素
+.l-contents.l-hobby {
+  .hobby {
+    padding: 2rem 0 5rem;
+    @media #{$media-sp} {
+      padding: 2rem 0 2rem;
+    }
+    &__ttl {
+      font-size: 4rem;
+      font-weight: bold;
+      line-height: 1.2;
+      color: #001e1d;
+      letter-spacing: 0.2rem;
+      @media #{$media-sp} {
+        font-size: 3rem;
+      }
+    }
+    &__txt {
+      font-size: 2rem;
+      color: #001e1d;
+      @media #{$media-sp} {
+        font-size: 1.6rem;
+      }
+    }
+  }
+  .hobby-box {
+    position: relative;
+    width: 48%;
+    padding: 4rem;
+    margin: 0 0 4rem 0;
+    color: #001e1d;
+    background: #e8e4e6;
+    border-radius: 1rem;
+    box-shadow: inset -0.7rem -0.7rem 1rem #d3d0d1, inset 0.7rem 0.7rem 1rem #d3d0d1;
+    @media #{$media-sp} {
+      width: 100%;
+      padding: 2.5rem;
+      margin: 0 0 2.5rem 0;
+      box-shadow: inset -0.5rem -0.5rem 0.5rem #d3d0d1, inset 0.3rem 0.3rem 0.3rem #d3d0d1;
+    }
+    &__ttl {
+      position: relative;
+      font-size: 3rem;
+      font-weight: bold;
+      line-height: 1.2;
+      color: #001e1d;
+      @media #{$media-sp} {
+        font-size: 2.4rem;
+      }
+      .icon-svg {
+        position: absolute;
+        top: 0;
+        left: 3rem;
+        font-size: 7rem;
+        color: #001e1d;
+        @media #{$media-sp} {
+          left: 0rem;
+          font-size: 5.2rem;
+        }
+        &.no2 {
+          top: 0;
+          right: 3rem;
+          left: auto;
+          @media #{$media-sp} {
+            right: 0rem;
+          }
+        }
+      }
+    }
+    &__time {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    &__txt {
+      padding: 3rem 0 0;
+      @media #{$media-sp} {
+        padding: 1.5rem 0 0 0;
+      }
+    }
+  }
+}

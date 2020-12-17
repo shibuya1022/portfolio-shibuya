@@ -1,0 +1,39 @@
+.flex-pager {
+  @media #{$media-sp} {
+    padding: 3rem 0 1rem;
+  }
+  .minib {
+    width: 8rem;
+    height: 8rem;
+    margin: 0 1rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #001e1d;
+    cursor: pointer;
+    border-radius: 100%;
+    box-shadow: 1rem 1rem 1rem #96bbb0, -1rem -1rem 1rem #bddfd5, inset -1rem -1rem 1rem transparent,
+      inset 0.5rem 0.5rem 1rem transparent;
+    transition-duration: 0.3s;
+    @media #{$media-sp} {
+      width: 5.5rem;
+      height: 5.5rem;
+      font-size: 1.4rem;
+      box-shadow: 0.3rem 0.3rem 0.3rem #96bbb0, -0.3rem -0.3rem 0.3rem #bddfd5, inset -1rem -1rem 1rem transparent,
+        inset 0.5rem 0.5rem 1rem transparent;
+    }
+    @media #{$media-notsp} {
+      &:hover {
+        box-shadow: 1rem 1rem 1rem transparent, -1rem -1rem 1rem transparent, inset -1rem -1rem 1rem #bddfd5,
+          inset 0.5rem 0.5rem 1rem #96bbb0;
+      }
+    }
+    &.active {
+      box-shadow: 1rem 1rem 1rem transparent, -1rem -1rem 1rem transparent, inset -1rem -1rem 1rem #bddfd5,
+        inset 0.5rem 0.5rem 1rem #96bbb0 !important;
+      @media #{$media-sp} {
+        box-shadow: 0.5rem 0.5rem 0.5rem transparent, -0.5rem -0.5rem 0.5rem transparent,
+          inset -0.5rem -0.5rem 0.5rem #bddfd5, inset 0.5rem 0.5rem 0.5rem #96bbb0 !important;
+      }
+    }
+  }
+}

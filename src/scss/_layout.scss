@@ -8,7 +8,7 @@
 body {
   width: 100%;
   // min-width: 1200px;
-  background: #ffc93c;
+  background: #abd1c6;
 }
 // ↓SP相当幅
 @media #{$media-sp} {
@@ -67,5 +67,5 @@ p:not([class]):not(:last-child) {
 ::selection {
   //選択範囲の装飾設定
   color: #fff;
-  background: $siteColor;
+  background: $fontColor;
 }

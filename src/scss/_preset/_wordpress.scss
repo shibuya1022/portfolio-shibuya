@@ -260,7 +260,7 @@ body:not(.wp-admin) {
     }
     img[class*="attachment-"],
     img[class*="wp-image-"] {
-      width: 100%;
+      width: auto;
       padding: 0 0 2em;
     }
   } //SP相当の幅

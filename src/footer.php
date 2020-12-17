@@ -1,33 +1,46 @@
 <footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter">
 
-
-    <div class="wrap w1200 sp-wrap">
-        <div class="data-area flex bet sp-break">
+    <div class="wrap w1200">
+        <div class="data-area pc-flex bet break">
             <div class="left">
                 <div class="logo">
                     <a href="<?php echo H_URL; ?>">
-                        <div class="logo-part flex vcenter">
+                        <div class="logo-part pc-flex vcenter">
                             MAKO-STYLE
                         </div>
                     </a>
                 </div>
-                <div class="pc tel">
-                    <p class="text">お電話でのお問合わせ</p>
-                    <p class="no">0000000000</p>
-                    <p class="note">(土日・祝日も面接可能)</p>
-                </div>
             </div>
             <div class="right">
 
-                <ul class="link flex hend">
-                    <li>
-                        <a href="" target="">会社概要</a>
+                <ul class="link flex hend sp-break">
+                    <li class="right--Txt">
+                        <a href="<?php echo H_URL; ?>hobby/" target="">
+                            <i class="icon-arrow"></i>
+                            <div class="Bigtxt ta-center">HOBBY</div>
+                            <div class="Minitxt ta-center">シュミ</div>
+                        </a>
                     </li>
-                    <li>
-                        <a href="" target="">個人情報保護法について</a>
+                    <li class="right--Txt">
+                        <a href="<?php echo H_URL; ?>skill/" target="">
+                            <i class="icon-arrow"></i>
+                            <div class="Bigtxt ta-center">SKILL</div>
+                            <div class="Minitxt ta-center">スキル</div>
+                        </a>
                     </li>
-                    <li>
-                        <a href="" target="_blank">コーポレートサイト</a>
+                    <li class="right--Txt">
+                        <a href="<?php echo H_URL; ?>profile/" target="">
+                            <i class="icon-arrow"></i>
+                            <div class="Bigtxt ta-center">Profile</div>
+                            <div class="Minitxt ta-center">プロフィール</div>
+                        </a>
+                    </li>
+                    <li class="right--Txt v-none">
+                        <a href="" target="">
+                            <i class="icon-arrow"></i>
+                            <div class="Bigtxt ta-center">Contact</div>
+                            <div class="Minitxt ta-center">お問い合わせ</div>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -35,9 +48,10 @@
     </div>
     <div class="footer__copy">
         <div class="wrap w1200 sp-wrap">
-            &copy;
+            Copyright&copy;
             <span itemprop="copyrightYear">2020</span>
-            <span itemprop="copyrightHolder name">会社名会社名会社名会社名</span>
+            <span class="footer__copy--Sitename">マコブログ</span>
+            <span itemprop="copyrightHolder name"> All Rights Reserved.</span>
         </div>
     </div>
 </footer>

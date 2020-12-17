@@ -14,11 +14,11 @@ jQuery(function ($) {
   //  ######   ###  ###  #### ##        ######## ##     ##
   if ($('.MV-swiper__container')[0]) {
     // Swiperコンテナを検出したら実行
-    const MvSwiper = new Swiper('.MV-swiper__container', {
+    const mvSwiper = new Swiper('.MV-swiper__container', {
       effect: 'cube', // slide,fade,cube,coverflow
       speed: 1500, // アニメ速度
       loop: true, // ループ
-      loopAdditionalSlides: 3, //ループ演出用のクローン数を増やして安定化させる
+      loopAdditionalSlides: 5, //ループ演出用のクローン数を増やして安定化させる
       centeredSlides: true,
       slidesPerView: 1, //表示数変更
       autoplay: {
@@ -31,6 +31,7 @@ jQuery(function ($) {
       },
       pagination: {
         el: '.MV-swiper-pagination',
+        // clickable: true
         type: 'fraction'
       }
     })
@@ -56,6 +57,11 @@ jQuery(function ($) {
   //    ##    ##    ##  ##     ## ##   ### ##   ##  ##     ##
   //    ##    ##     ##  #######  ##    ## ##    ##  #######
   function trunk8() {
+    $('.js-t8.line4').trunk8({
+      // 指定要素に行数制限をかける
+      lines: 4,
+      fill: '...'
+    })
     $('.js-t8.line3').trunk8({
       // 指定要素に行数制限をかける
       lines: 3,

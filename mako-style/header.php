@@ -42,6 +42,8 @@
 </head>
 
 <body <?php body_class(); ?>>
+    <!-- 当サイトはFreepik-jp.freepik.comの画像を使用しています。
+当サイトはpexels.comの画像を使用しています。 -->
     <div id="overlay" class="md-overlay"></div>
     <header id="header" class="header" itemscope="" itemtype="https://schema.org/WPHeader">
 
@@ -55,14 +57,30 @@
                 <div class="header__right flex">
                     <div class="pc header__nav flex">
                         <div class="pulldown">
-                            <span class="md-uline pulldown__head flex vcenter hcenter">
+                            <a href="<?php echo H_URL; ?>hobby/" class="md-uline pulldown__head flex vcenter hcenter">
+                                <div class="pulldown__head-Txt">
+                                    HOBBY
+                                    <span class="pulldown__head__mini">シュミ</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="pulldown">
+                            <a href="<?php echo H_URL; ?>skill/" class="md-uline pulldown__head flex vcenter hcenter">
+                                <div class="pulldown__head-Txt">
+                                    SKILL
+                                    <span class="pulldown__head__mini">スキル</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="pulldown">
+                            <a href="<?php echo H_URL; ?>profile/" class="md-uline pulldown__head flex vcenter hcenter">
                                 <div class="pulldown__head-Txt">
                                     Profile
                                     <span class="pulldown__head__mini">プロフィール</span>
                                 </div>
-                            </span>
+                            </a>
                         </div>
-                        <div class="pulldown">
+                        <div class="pulldown is-none">
                             <span class="md-uline pulldown__head flex vcenter hcenter">
                                 <div class="pulldown__head-Txt">
                                     Contact
@@ -88,45 +106,31 @@
     <nav id="sp-menu" class="spNav" itemscope="" itemtype="https://schema.org/SiteNavigationElement">
         <ul class="spNav__list">
             <li class="spNav__box">
-                <div class="md-acc">
-                    <input id="sp-menu-1" class="acc-check" type="checkbox" value="" />
-                    <label for="sp-menu-1" class="acc-btn spNav__item flex vcenter hcenter">
-                        アコーディオン1
-                    </label>
-                    <div class="acc-body">
-                        <div class="acc-in">
-                            <a href="" class="acc-hide spNav__item spNav__item--sub flex vcenter hcenter">
-                                テキスト1
-                            </a>
-                            <a href="" class="acc-hide spNav__item spNav__item--sub flex vcenter hcenter">
-                                テキスト2
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <a href="<?php echo H_URL; ?>hobby/" class="spNav__item flex vcenter hcenter">
+                    HOBBY
+                    <span class="pulldown__head__mini">シュミ</span>
+                    <i class="icon-allow"></i>
+                </a>
             </li>
             <li class="spNav__box">
-                <div class="md-acc">
-                    <input id="sp-menu-2" class="acc-check" type="checkbox" value="" />
-                    <label for="sp-menu-2" class="acc-btn spNav__item flex vcenter hcenter">
-                        アコーディオン2
-                        <i class="icon spNav__icon icon-down"></i>
-                    </label>
-                    <div class="acc-body">
-                        <div class="acc-in">
-                            <a href="" class="acc-hide spNav__item spNav__item--sub flex vcenter hcenter">
-                                テキスト3
-                            </a>
-                            <a href="" class="acc-hide spNav__item spNav__item--sub flex vcenter hcenter">
-                                テキスト4
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <a href="<?php echo H_URL; ?>skill/" class="spNav__item flex vcenter hcenter">
+                    SKILL
+                    <span class="pulldown__head__mini">スキル</span>
+                    <i class="icon-allow"></i>
+                </a>
             </li>
             <li class="spNav__box">
-                <a href="<?php echo H_URL; ?>about/" class="spNav__item flex vcenter hcenter">
-                    リンク1
+                <a href="<?php echo H_URL; ?>profile/" class="spNav__item flex vcenter hcenter">
+                    Profile
+                    <span class="pulldown__head__mini">プロフィール</span>
+                    <i class="icon-allow"></i>
+                </a>
+            </li>
+            <li class="spNav__box is-none">
+                <a href="<?php echo H_URL; ?>contact/" class="spNav__item flex vcenter hcenter">
+                    Contact
+                    <span class="pulldown__head__mini">お問い合わせ</span>
+                    <i class="icon-allow"></i>
                 </a>
             </li>
         </ul>
