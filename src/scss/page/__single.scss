@@ -1,5 +1,8 @@
 .l-contents.l-single {
   padding: 17rem 0 0 0;
+  &.animeVer {
+    background: #f3d2c1;
+  }
   @media #{$media-sp} {
     padding: 10rem 0 0 0;
   }
@@ -9,6 +12,9 @@
       padding: 5rem;
       border-radius: 1rem;
       box-shadow: inset -1rem -1rem 1rem #bddfd5, inset 0.5rem 0.5rem 1rem #96bbb0;
+      &.animeVer {
+        box-shadow: inset -1rem -1rem 1rem #f8e5db, inset 0.5rem 0.5rem 1rem #d8b29f;
+      }
       @media #{$media-sp} {
         width: 100%;
         padding: 2rem;
@@ -47,7 +53,6 @@
       font-weight: bold;
       line-height: 1.5;
       color: #333;
-      text-shadow: 1px 1px 1px #c9cacf, 2px 2px 2px #c9cacf;
       @media #{$media-sp} {
         padding: 0.5rem 0;
         font-size: 1.8rem;
@@ -111,6 +116,17 @@
         margin-bottom: 0.5em;
         @media #{$media-sp} {
           margin: 0 0 1rem;
+        }
+      }
+    }
+    .adsClass {
+      @media #{$media-sp} {
+        padding: 3rem 0 0;
+        iframe {
+          &.sp {
+            position: relative;
+            left: -1rem !important;
+          }
         }
       }
     }

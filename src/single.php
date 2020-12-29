@@ -20,8 +20,8 @@ if (have_posts()) {
                                         </div>
                                         <div class="cate">
                                             <?php $cat = get_the_category(); ?>
-                                            <?php $cat = $cat[0]; ?>
-                                            <?php echo get_cat_name($cat); ?>
+                                            <?php $cat_name  = $cat[0]->cat_name; ?>
+                                            <?php echo $cat_name; ?>
                                         </div>
                                     </div>
                                     <div class="Contents-title">
@@ -30,7 +30,14 @@ if (have_posts()) {
                                     <div class="sp-contents wp-post">
                                         <?php the_content(); ?>
                                     </div>
-
+                                    <div class="adsClass ta-center">
+                                        <iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=293&l=ur1&category=primevideo&banner=1JAAQZZG8E813PGD5282&f=ifr&linkID=e76f7ce6cc47dbf88552988c0f8577d7&t=makoblog046-22&tracking_id=makoblog046-22"
+                                            width="640" height="100" class="pc" scrolling="no" border="0" marginwidth="0" style="border:none;"
+                                            frameborder="0"></iframe>
+                                        <iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=12&l=ur1&category=primevideo&banner=18NKS0GQCSFJGQWKBJ02&f=ifr&linkID=3a1623cc7485d780ff52e0a9aa91202c&t=makoblog046-22&tracking_id=makoblog046-22"
+                                            width="300" height="250" class="sp" scrolling="no" border="0" marginwidth="0" style="border:none;"
+                                            frameborder="0"></iframe>
+                                    </div>
                                     <?php
 
   //#####  ##    ##  ######

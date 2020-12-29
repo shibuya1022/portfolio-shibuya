@@ -16,6 +16,13 @@ $headerSP: 6rem;
     background: #abd1c6;
     border-radius: 10rem;
     box-shadow: -0.6rem -0.6rem 0.6rem #bddfd5, 0.6rem 0.6rem 0.5rem #96bbb0;
+    @media screen and(min-width:768px) and(max-width:960px) {
+      padding: 0 2rem 0 2rem;
+    }
+    &.animeVer {
+      background: #f3d2c1;
+      box-shadow: -0.6rem -0.6rem 0.6rem #f8e5db, 0.6rem 0.6rem 0.5rem #d8b29f;
+    }
   }
   &__base {
   }
@@ -31,6 +38,9 @@ $headerSP: 6rem;
     color: #001e1d;
     // text-shadow: 1px 1px 1px #c9cacf, 2px 2px 2px #ddd, 3px 3px 2px #666;
     letter-spacing: 0.2rem;
+    @media screen and(min-width:768px) and(max-width:1080px) {
+      font-size: 3.4rem;
+    }
   }
   &__nav {
     margin-right: 1rem;
@@ -96,6 +106,9 @@ $headerSP: 6rem;
     letter-spacing: 0.2rem;
     cursor: pointer;
     transition-duration: 0.5s;
+    @media screen and(min-width:768px) and(max-width:1080px) {
+      padding: 2.5rem 1.5rem;
+    }
     &__mini {
       display: block;
       font-size: 1.4rem;
@@ -109,6 +122,20 @@ $headerSP: 6rem;
       height: 100%;
       line-height: 1.5;
       text-align: center;
+    }
+    &.animeVer {
+      position: relative;
+      &::after {
+        position: absolute;
+        top: 50%;
+        right: 0.5rem;
+        width: 1rem;
+        height: 1rem;
+        content: "";
+        border-top: solid #001e1d 3px;
+        border-right: solid #001e1d 3px;
+        transform: rotate(45deg);
+      }
     }
   }
   &__body {
@@ -183,6 +210,7 @@ $headerSP: 6rem;
     background: #abd1c6;
     border-radius: 1rem;
     box-shadow: -0.5rem -0.5rem 0.5rem #bddfd5, 0.4rem 0.4rem 0.3rem #96bbb0;
+
     .icon-allow {
       position: absolute;
       top: 50%;
@@ -226,6 +254,15 @@ $headerSP: 6rem;
       }
     }
   }
+  &.animeVer {
+    .spNav__item {
+      background: #f3d2c1;
+      box-shadow: -0.3rem -0.3rem 0.3rem #f8e5db, 0.3rem 0.3rem 0.3rem #d8b29f;
+    }
+    .icon-allow {
+      right: 1rem;
+    }
+  }
 }
 
 /*
@@ -253,6 +290,10 @@ $headerSP: 6rem;
   background: #004643;
   border-radius: 100%;
   box-shadow: -0.5rem -0.5rem 0.7rem #bddfd5, 0.6rem 0.6rem 0.5rem #96bbb0;
+  &.animeVer {
+    background: #8bd3dd;
+    box-shadow: -0.2rem -0.2rem 0.3rem #a5e4ec, 0.2rem 0.2rem 0.3rem #67abb4;
+  }
   &__box {
     position: absolute;
     top: 0;

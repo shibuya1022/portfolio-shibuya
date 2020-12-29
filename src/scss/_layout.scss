@@ -9,7 +9,13 @@ body {
   width: 100%;
   // min-width: 1200px;
   background: #abd1c6;
+  &.page-id-454,
+  &.page-id-458,
+  &.single-makoani {
+    background: #f3d2c1;
+  }
 }
+
 // ↓SP相当幅
 @media #{$media-sp} {
   body {

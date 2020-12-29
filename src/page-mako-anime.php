@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="l-contents l-top">
+<div class="l-contents l-anime">
     <article class="l-main">
         <section class="MV">
             <div class="wrap w1200">
@@ -8,7 +8,7 @@
                     <div class="MV-swiper__container swiper-container">
                         <?php
     $MV_query = array(  //クエリー初期設定
-        'post_type' => 'post',          //投稿タイプ
+        'post_type' => 'makoani',          //投稿タイプ
         'post_status' => 'publish',        //公開済みの記事
         'posts_per_page' => 4,            //出力数　-1で全件
         'order' => 'DESC',          //降順ソート
@@ -40,6 +40,7 @@
                                                     <div class="swiper-slide--wrap__ttl">
                                                         <span class="js-t8 line2">
                                                             <?php the_title(); ?>
+                                                            <?php echo get_post_type_archive_link( 'anime' ); ?>
                                                         </span>
                                                     </div>
                                                     <div class="swiper-slide--wrap__txt">
@@ -85,7 +86,7 @@
                             <div class="pc-flex bet break">
                                 <?php
     $index_query = array(  //クエリー初期設定
-        'post_type' => 'post',          //投稿タイプ
+        'post_type' => 'makoani',          //投稿タイプ
         'post_status' => 'publish',        //公開済みの記事
         'posts_per_page' => 20,            //出力数　-1で全件
         'order' => 'DESC',          //降順ソート
@@ -174,7 +175,7 @@
                     </div>
 
                     <?php
-require_once 'sidebar.php';
+require_once 'sidebar_anime.php';
 ?>
 
                 </div>

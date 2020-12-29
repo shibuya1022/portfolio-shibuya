@@ -90,32 +90,24 @@
                 }
                 ?>
                         </div>
-                        <div class="blog-side__head popttl">
-                            <h2 class="title ta-center">人気なカテゴリー</h2>
-                        </div>
-                        <div class="cateVer">
-                            <?php
-                            if (function_exists('wpp_get_mostpopular')) {
-                                $args = array(
-                                    'limit' => 10,
-                        'range' => 'last30days',
-                        'stats_category' => 1,
-                        'post_html' => '<li class="blog-side__tag wppV">{category}</li>'
-                                );
-
-                            }
-                            ?>
-                                <?php
-                if (function_exists('wpp_get_mostpopular')) {
-                    wpp_get_mostpopular($args);
-                }
-                ?>
-                        </div>
                     </div>
 
-
-
-
+                    <div class="blog-side__head popttl">
+                        <h2 class="title ta-center">アニメ特設サイト</h2>
+                    </div>
+                    <a href="<?php echo H_URL; ?>mako-anime/" class="Ani-Banner">
+                        <div class="Img">
+                            <img src="<?php echo T_URL; ?>img/ani_banner_mini.png" alt="">
+                        </div>
+                    </a>
+                    <div class="adsClass ta-center">
+                        <iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=14&l=ur1&category=primevideo&banner=159G7XECNT6V0W7AXR02&f=ifr&linkID=7dd72383ab13ddfacb18aa9b9e8fe942&t=makoblog046-22&tracking_id=makoblog046-22"
+                            width="160" height="600" class="pc" scrolling="no" border="0" marginwidth="0" style="border:none;"
+                            frameborder="0"></iframe>
+                        <iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=12&l=ur1&category=primevideo&banner=0N84Z260P2YWJ45V2G82&f=ifr&linkID=291c177fd56b96f87872ff08020c6e97&t=makoblog046-22&tracking_id=makoblog046-22"
+                            width="300" height="250" class="sp" scrolling="no" border="0" marginwidth="0" style="border:none;"
+                            frameborder="0"></iframe>
+                    </div>
 
 
                     <?php if (0) : //停止コード開始

@@ -1,12 +1,15 @@
-<footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<footer id="footer" class="footer <?php if(is_page('mako-anime') || is_singular('makoani')){ ?>animeVer<?php } ?>" itemscope
+    itemtype="http://schema.org/WPFooter">
 
     <div class="wrap w1200">
         <div class="data-area pc-flex bet break">
             <div class="left">
-                <div class="logo">
-                    <a href="<?php echo H_URL; ?>">
+                <div class="logo <?php if(is_page('mako-anime') || is_singular('makoani')){ ?>animeVer<?php } ?>">
+                    <a href="<?php echo H_URL; ?><?php if(is_page('mako-anime') || is_singular('makoani')){ ?>mako-anime/<?php } ?>">
                         <div class="logo-part pc-flex vcenter">
-                            MAKO-STYLE
+                            <?php if(is_page('mako-anime')){ ?>MAKO-ANIME
+                            <?php }else { ?>MAKO-BLOG
+                            <?php   } ?>
                         </div>
                     </a>
                 </div>
@@ -14,6 +17,15 @@
             <div class="right">
 
                 <ul class="link flex hend sp-break">
+                    <?php if(is_page('mako-anime') || is_singular('makoani')){ ?>
+                    <li class="right--Txt animeVer">
+                        <a href="<?php echo H_URL; ?>" target="" class="animeVer">
+                            <i class="icon-arrow animeVer"></i>
+                            <div class="Bigtxt ta-center">PROGRAMMING</div>
+                            <div class="Minitxt ta-center">プログラミングサイト</div>
+                        </a>
+                    </li>
+                    <?php }else { ?>
                     <li class="right--Txt">
                         <a href="<?php echo H_URL; ?>hobby/" target="">
                             <i class="icon-arrow"></i>
@@ -35,13 +47,15 @@
                             <div class="Minitxt ta-center">プロフィール</div>
                         </a>
                     </li>
-                    <li class="right--Txt v-none">
-                        <a href="" target="">
+                    <li class="right--Txt">
+                        <a href="<?php echo H_URL; ?>mako-anime/" target="">
                             <i class="icon-arrow"></i>
-                            <div class="Bigtxt ta-center">Contact</div>
-                            <div class="Minitxt ta-center">お問い合わせ</div>
+                            <div class="Bigtxt ta-center">ANIME</div>
+                            <div class="Minitxt ta-center">アニメサイト</div>
                         </a>
                     </li>
+                    <?php   } ?>
+
                 </ul>
             </div>
         </div>

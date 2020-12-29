@@ -8,6 +8,9 @@
   cursor: pointer;
   background: rgba(#abd1c6, 0.9);
   transition-duration: 0.5s;
+  &.animeVer {
+    background: #f3d2c1;
+  }
   &:not(.active) {
     z-index: -1;
     visibility: hidden;

@@ -101,7 +101,7 @@ if (!empty($cat_slug)) {
                                 <div class="pc-flex bet break">
                                     <?php
                         $tax_name = 'category';  //タクソノミー名
-    $index_query = array(  //クエリー初期設定
+    $archive_query = array(  //クエリー初期設定
         'post_type' => 'post',          //投稿タイプ
         'post_status' => 'publish',        //公開済みの記事
         'posts_per_page' => 20,            //出力数　-1で全件
@@ -112,7 +112,7 @@ if (!empty($cat_slug)) {
     );
     // タクソノミークエリー追加
 if (is_category()) {
-    $index_query['tax_query'][0] = array(
+    $archive_query['tax_query'][0] = array(
 
         'taxonomy' => $tax_name,  //対象タクソノミー
         'field' => 'term_id',
@@ -120,12 +120,12 @@ if (is_category()) {
 
     );
 }
-    $index_query = new WP_Query($index_query);
+    $archive_query = new WP_Query($archive_query);
 ?>
 
-                                        <?php if ($index_query->have_posts()) { ?>
-                                        <?php  while ($index_query->have_posts()) {
-    $index_query->the_post(); ?>
+                                        <?php if ($archive_query->have_posts()) { ?>
+                                        <?php  while ($archive_query->have_posts()) {
+    $archive_query->the_post(); ?>
                                         <a class="article" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
                                             <div class="article-down">
                                                 <div class="article__imgClass">
@@ -150,6 +150,52 @@ if (is_category()) {
                                             <br>ご希望の記事が見つかりませんでした。</div>
                                         <?php  } ?>
                                 </div>
+                                <div class="adsClass ta-center">
+                                    <iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=293&l=ur1&category=primevideo&banner=1JAAQZZG8E813PGD5282&f=ifr&linkID=e76f7ce6cc47dbf88552988c0f8577d7&t=makoblog046-22&tracking_id=makoblog046-22"
+                                        width="640" height="100" class="pc" scrolling="no" border="0" marginwidth="0" style="border:none;"
+                                        frameborder="0"></iframe>
+                                    <iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=12&l=ur1&category=primevideo&banner=18NKS0GQCSFJGQWKBJ02&f=ifr&linkID=3a1623cc7485d780ff52e0a9aa91202c&t=makoblog046-22&tracking_id=makoblog046-22"
+                                        width="300" height="250" class="sp" scrolling="no" border="0" marginwidth="0" style="border:none;"
+                                        frameborder="0"></iframe>
+                                </div>
+                                <?php
+/*
+ ########     ###     ######   ######## ########
+ ##     ##   ## ##   ##    ##  ##       ##     ##
+ ##     ##  ##   ##  ##        ##       ##     ##
+ ########  ##     ## ##   #### ######   ########
+ ##        ######### ##    ##  ##       ##   ##
+ ##        ##     ## ##    ##  ##       ##    ##
+ ##        ##     ##  ######   ######## ##     ##
+*/
+?>
+                                    <?php
+                    flex_pager(array(
+                        'query' => $archive_query, //使用クエリー
+                        'range' => 1, //カレントからのページボタン数　指定数*2+1が総数
+                        'current_format' => '<span class="active flex vcenter hcenter minib">%d</span>',  //カレントボタンのレイアウト
+                        'prev_next' => false, //戻る/進むボタン
+                        'edge_pn' => false, //ページ末端側の戻る/進むボタンを表示するか
+                        'prev_label' => '≪前へ', //戻るボタンテキスト
+                        'next_label' => '次へ≫', //進むボタンテキスト
+                        'first_last' => false, //最初/最後ボタン
+                        'first_last_no' => true, //最初/最後ナンバー
+                        'edge_fl' => false, //ページ末端側の最初/最後ボタンを表示するか
+                        'first_label' => '<i class="icon icon-double-left" ></i>',  //最初ボタンテキスト
+                        'last_label' => '<i class="icon icon-double-right"></i>',  //最後ボタンテキスト
+                        'op_left' => '', //左側オプション　%d（現ページ）%d（総ページ）
+                        'op_right' => '', //右側オプション　%d（現ページ）%d（総ページ）
+                        'navi_class' => 'flex-pager flex vcenter hcenter oswald', //ナビのクラス スペース区切りで複数指定
+                        'navi_id' => '', //ナビのID
+                        'child_class' => 'flex vcenter hcenter minib', //子要素のクラス
+                        'navi_type' => 'div', //ナビのタイプ
+                        'child_wrap' => '', //子要素を括る要素
+                        'cw_class' => '', //child_wrapのクラス
+                        'cw_cu_class' => '', //child_wrapのカレントボタンクラス
+                        'off_class' => 'off', //edgeオプションで表示している要素のクラス wrap有効時はそちらに付加
+                        'echo' => true, //出力するか、値で返すか
+                        'attr' => '', // Aタグに任意の属性を追加
+                    )); ?>
                         </div>
                     </div>
                     <?php

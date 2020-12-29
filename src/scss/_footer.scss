@@ -4,6 +4,10 @@
   margin: 5rem auto;
   border-radius: 5rem;
   box-shadow: inset -1rem -1rem 1rem #bddfd5, inset 0.6rem 0.6rem 0.5rem #96bbb0;
+  &.animeVer {
+    background: #f3d2c1;
+    box-shadow: inset -1rem -1rem 1rem #f8e5db, inset 0.6rem 0.6rem 0.5rem #d8b29f;
+  }
   a {
     color: #001e1d;
   }
@@ -21,6 +25,9 @@
       color: #001e1d;
       text-shadow: 1px 1px 1px #c9cacf, 2px 2px 2px #ddd, 3px 3px 2px #666;
       letter-spacing: 0.2rem;
+      &.animeVer {
+        text-shadow: 1px 1px 1px #f8e5db, 2px 2px 2px #ddd, 3px 3px 2px #666;
+      }
       @media #{$media-sp} {
         padding: 0 0 1rem;
         a {
@@ -49,6 +56,9 @@
       padding: 0 2rem;
       margin: 0 4.5rem 0 0;
       text-shadow: 1px 1px 1px #bddfd5, 2px 2px 2px #ddd, 3px 3px 1px #888;
+      &.animeVer {
+        text-shadow: 1px 1px 1px #f8e5db, 2px 2px 1px #888;
+      }
       @media #{$media-sp} {
         padding: 0 1rem;
         margin: 0;
@@ -72,6 +82,10 @@
         border-radius: 100%;
         box-shadow: -0.6rem -0.6rem 0.6rem #bddfd5, 0.6rem 0.6rem 0.5rem #96bbb0;
         transform: translateY(-50%);
+        &.animeVer {
+          background: #f3d2c1;
+          box-shadow: -0.6rem -0.6rem 0.6rem #f8e5db, 0.6rem 0.6rem 0.5rem #d8b29f;
+        }
         @media #{$media-sp} {
           right: 1rem;
         }
@@ -81,6 +95,9 @@
       @media #{$media-sp} {
         width: 50%;
         padding: 0 0 1rem;
+        &.animeVer {
+          width: 100%;
+        }
       }
     }
     .Bigtxt {

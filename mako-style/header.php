@@ -44,18 +44,32 @@
 <body <?php body_class(); ?>>
     <!-- 当サイトはFreepik-jp.freepik.comの画像を使用しています。
 当サイトはpexels.comの画像を使用しています。 -->
-    <div id="overlay" class="md-overlay"></div>
+    <div id="overlay" class="md-overlay <?php if(is_page('mako-anime') || is_singular('makoani')){ ?>animeVer<?php } ?>"></div>
     <header id="header" class="header" itemscope="" itemtype="https://schema.org/WPHeader">
 
-        <div class="header__frame">
+        <div class="header__frame <?php if(is_page('mako-anime') || is_singular('makoani')){ ?>animeVer<?php } ?>">
             <div class="header__base flex bet str">
                 <div class="header__left flex vcenter">
-                    <a class="header__logo flex vcenter" href="<?php echo H_URL; ?>">
-                        <h1 class="header__logo-text">MAKO-STYLE</h1>
+                    <a class="header__logo flex vcenter" href="<?php echo H_URL; ?><?php if(is_page('mako-anime') || is_singular('makoani')){ ?>mako-anime/<?php } ?>">
+                        <h1 class="header__logo-text">
+                            <?php if(is_page('mako-anime') || is_singular('makoani')){ ?>MAKO-ANIME
+                            <?php }else { ?>MAKO-BLOG
+                            <?php   } ?>
+                        </h1>
                     </a>
                 </div>
                 <div class="header__right flex">
                     <div class="pc header__nav flex">
+                        <?php if(is_page('mako-anime') || is_singular('makoani')){ ?>
+                        <div class="pulldown">
+                            <a href="<?php echo H_URL; ?>" class="md-uline pulldown__head flex vcenter hcenter animeVer">
+                                <div class="pulldown__head-Txt">
+                                    PROGRAMMING
+                                    <span class="pulldown__head__mini">プログラミングサイト</span>
+                                </div>
+                            </a>
+                        </div>
+                        <?php }else { ?>
                         <div class="pulldown">
                             <a href="<?php echo H_URL; ?>hobby/" class="md-uline pulldown__head flex vcenter hcenter">
                                 <div class="pulldown__head-Txt">
@@ -80,16 +94,18 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="pulldown is-none">
-                            <span class="md-uline pulldown__head flex vcenter hcenter">
+                        <div class="pulldown">
+                            <a href="<?php echo H_URL; ?>mako-anime/" class="md-uline pulldown__head flex vcenter hcenter">
                                 <div class="pulldown__head-Txt">
-                                    Contact
-                                    <span class="pulldown__head__mini">お問い合わせ</span>
+                                    ANIME
+                                    <span class="pulldown__head__mini">アニメサイト</span>
                                 </div>
-                            </span>
+                            </a>
                         </div>
+                        <?php   } ?>
+
                     </div>
-                    <div id="sp-menu-open" class="sp spMenuBtn">
+                    <div id="sp-menu-open" class="sp spMenuBtn <?php if(is_page('mako-anime') || is_singular('makoani')){ ?>animeVer<?php } ?>">
                         <div class="spMenuBtn__box">
                             <span class="spMenuBtn__bar"></span>
                             <span class="spMenuBtn__bar"></span>
@@ -103,8 +119,19 @@
     </header>
 
 
-    <nav id="sp-menu" class="spNav" itemscope="" itemtype="https://schema.org/SiteNavigationElement">
+    <nav id="sp-menu" class="spNav <?php if(is_page('mako-anime') || is_singular('makoani')){ ?>animeVer<?php } ?>" itemscope=""
+        itemtype="https://schema.org/SiteNavigationElement">
         <ul class="spNav__list">
+
+            <?php if(is_page('mako-anime') || is_singular('makoani')){ ?>
+            <li class="spNav__box">
+                <a href="<?php echo H_URL; ?>" class="spNav__item flex vcenter hcenter">
+                    PROGRAMMING
+                    <span class="pulldown__head__mini">プログラミングサイト</span>
+                    <i class="icon-allow"></i>
+                </a>
+            </li>
+            <?php }else { ?>
             <li class="spNav__box">
                 <a href="<?php echo H_URL; ?>hobby/" class="spNav__item flex vcenter hcenter">
                     HOBBY
@@ -126,13 +153,15 @@
                     <i class="icon-allow"></i>
                 </a>
             </li>
-            <li class="spNav__box is-none">
-                <a href="<?php echo H_URL; ?>contact/" class="spNav__item flex vcenter hcenter">
-                    Contact
-                    <span class="pulldown__head__mini">お問い合わせ</span>
+            <li class="spNav__box">
+                <a href="<?php echo H_URL; ?>mako-anime/" class="spNav__item flex vcenter hcenter">
+                    ANIME
+                    <span class="pulldown__head__mini">アニメサイト</span>
                     <i class="icon-allow"></i>
                 </a>
             </li>
+            <?php } ?>
+
         </ul>
     </nav>
     <!--

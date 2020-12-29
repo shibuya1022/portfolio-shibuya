@@ -123,6 +123,14 @@
                                         <br>ご希望の記事が見つかりませんでした。</div>
                                     <?php  } ?>
                             </div>
+                            <div class="adsClass ta-center">
+                                <iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=293&l=ur1&category=primevideo&banner=1JAAQZZG8E813PGD5282&f=ifr&linkID=e76f7ce6cc47dbf88552988c0f8577d7&t=makoblog046-22&tracking_id=makoblog046-22"
+                                    width="640" height="100" class="pc" scrolling="no" border="0" marginwidth="0" style="border:none;"
+                                    frameborder="0"></iframe>
+                                <iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=12&l=ur1&category=primevideo&banner=18NKS0GQCSFJGQWKBJ02&f=ifr&linkID=3a1623cc7485d780ff52e0a9aa91202c&t=makoblog046-22&tracking_id=makoblog046-22"
+                                    width="300" height="250" class="sp" scrolling="no" border="0" marginwidth="0" style="border:none;"
+                                    frameborder="0"></iframe>
+                            </div>
                             <?php
 /*
  ########     ###     ######   ######## ########
@@ -161,14 +169,17 @@
                         'echo' => true, //出力するか、値で返すか
                         'attr' => '', // Aタグに任意の属性を追加
                     )); ?>
+
                         </div>
                     </div>
+
                     <?php
 require_once 'sidebar.php';
 ?>
 
                 </div>
             </div>
+
         </section>
     </article>
 </div>

@@ -27,12 +27,12 @@
         min-height: 25.5rem;
       }
       @media #{$media-sp} {
-        height: 38rem;
+        height: auto;
         min-height: auto;
         box-shadow: -0.5rem -0.5rem 0.5rem #bddfd5, 0.4rem 0.4rem 0.3rem #96bbb0;
       }
       @media screen and (min-width: 760px) and (max-width: 840px) {
-        height: 25rem !important;
+        height: 28rem !important;
       }
       &--wrap {
         padding: 2rem;
@@ -66,7 +66,7 @@
           }
           @media screen and (min-width: 760px) and (max-width: 840px) {
             width: calc(100% - 35rem);
-            padding: 0 0 !important;
+            padding: 0 0 0 2rem !important;
           }
           @media #{$media-sp} {
             width: 100%;
@@ -268,7 +268,6 @@
           }
           @media #{$media-sp} {
             font-size: 1.8rem;
-            text-shadow: 1px 1px 0 #c9cacf, 2px 2px 0px #888;
             letter-spacing: 0.1rem;
           }
         }
@@ -288,6 +287,13 @@
         font-size: 1.8rem;
         font-weight: 500;
         color: #004643;
+      }
+    }
+    .adsClass {
+      @media #{$media-sp} {
+        padding: 2rem 0;
+        iframe {
+        }
       }
     }
   }
