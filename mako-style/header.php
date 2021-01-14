@@ -33,6 +33,7 @@
     <title>
         <?php wp_title('|', true, 'right'); echo SITE_NAME; ?>
     </title>
+    <script data-ad-client="ca-pub-6413508424972973" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo T_URL; ?>css/common.css?v<?php echo filemtime(T_PATH . 'css/common.css'); ?>"
     />
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700&display=swap" rel="stylesheet" media="print"
