@@ -151,15 +151,6 @@
                         </div>
 
                     </div>
-
-                    <div class="blog-side__head popttl">
-                        <h2 class="title ta-center">アニメ特設サイト</h2>
-                    </div>
-                    <a href="<?php echo H_URL; ?>mako-anime/" class="Ani-Banner">
-                        <div class="Img">
-                            <img src="<?php echo T_URL; ?>img/ani_banner_mini.png" alt="">
-                        </div>
-                    </a>
                     <div class="adsClass ta-center">
                         <div class="pc">
                             <div class="ta-center">
