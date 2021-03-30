@@ -31,12 +31,35 @@ if (have_posts()) {
                                         <?php the_content(); ?>
                                     </div>
                                     <div class="adsClass ta-center">
-                                        <iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=293&l=ur1&category=primevideo&banner=1JAAQZZG8E813PGD5282&f=ifr&linkID=e76f7ce6cc47dbf88552988c0f8577d7&t=makoblog046-22&tracking_id=makoblog046-22"
-                                            width="640" height="100" class="pc" scrolling="no" border="0" marginwidth="0" style="border:none;"
-                                            frameborder="0"></iframe>
-                                        <iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=12&l=ur1&category=primevideo&banner=18NKS0GQCSFJGQWKBJ02&f=ifr&linkID=3a1623cc7485d780ff52e0a9aa91202c&t=makoblog046-22&tracking_id=makoblog046-22"
-                                            width="300" height="250" class="sp" scrolling="no" border="0" marginwidth="0" style="border:none;"
-                                            frameborder="0"></iframe>
+                                        <div class="pc-flex bet singleV">
+                                            <div class="btn pc">
+                                                <a href="https://px.a8.net/svt/ejp?a8mat=3H3MA8+CR186Q+3GWO+614CX" rel="nofollow">
+                                                    <img border="0" width="300" height="250" alt="" src="https://www25.a8.net/svt/bgt?aid=210120848771&wid=001&eno=01&mid=s00000016188001013000&mc=1">
+                                                </a>
+                                                <img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=3H3MA8+CR186Q+3GWO+614CX" alt="">
+                                            </div>
+                                            <div class="btn pc">
+                                                <a href="https://px.a8.net/svt/ejp?a8mat=3H3MA6+CR186Q+0K+10YDIP" rel="nofollow">
+                                                    <img border="0" width="300" height="250" alt="" src="https://www20.a8.net/svt/bgt?aid=210120846771&wid=001&eno=01&mid=s00000000002006207000&mc=1">
+                                                </a>
+                                                <img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=3H3MA6+CR186Q+0K+10YDIP" alt="">
+                                            </div>
+                                            <div class="sp">
+                                                <a href="https://px.a8.net/svt/ejp?a8mat=3H3MA8+CR186Q+3GWO+61JSH" rel="nofollow">
+                                                    <img border="0" width="250" height="250" alt="" src="https://www27.a8.net/svt/bgt?aid=210120848771&wid=001&eno=01&mid=s00000016188001015000&mc=1">
+                                                </a>
+                                                <img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=3H3MA8+CR186Q+3GWO+61JSH" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="singleVrakuten pc">
+
+                                            <a href="https://rpx.a8.net/svt/ejp?a8mat=3H3MA6+CRMNSI+2HOM+631SX&rakuten=y&a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2F0ea62065.34400275.0ea62066.204f04c0%2Fa21012035155_3H3MA6_CRMNSI_2HOM_631SX%3Fpc%3Dhttp%253A%252F%252Fwww.rakuten.co.jp%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252F"
+                                                rel="nofollow">
+                                                <img src="http://hbb.afl.rakuten.co.jp/hsb/0eb4bbdc.be4daa89.0eb4bbaa.95151395/" border="0">
+                                            </a>
+                                            <img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=3H3MA6+CRMNSI+2HOM+631SX" alt="">
+
+                                        </div>
                                     </div>
                                     <?php
 

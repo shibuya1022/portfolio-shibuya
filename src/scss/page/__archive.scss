@@ -207,6 +207,11 @@
         box-shadow: 1rem 1rem 1rem #96bbb0, -1rem -1rem 1rem #bddfd5, inset -1rem -1rem 1rem transparent,
           inset 0.5rem 0.5rem 1rem transparent;
         transition-duration: 0.3s;
+        @media screen and (min-width: 1200px) and (max-width: 1980px) {
+          &.TOPver {
+            height: 45rem;
+          }
+        }
         @media #{$media-sp} {
           width: 100%;
           padding: 1.5rem;

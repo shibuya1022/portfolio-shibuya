@@ -121,7 +121,7 @@
     }
     .adsClass {
       @media #{$media-sp} {
-        padding: 3rem 0 0;
+        padding: 1.5rem 0 0;
         iframe {
           &.sp {
             position: relative;
@@ -129,6 +129,15 @@
           }
         }
       }
+    }
+  }
+  .btn {
+    padding: 0 1rem;
+  }
+  .singleVrakuten {
+    padding: 2rem 0 0 0;
+    @media #{$media-sp} {
+      padding: 1.5rem 0 0;
     }
   }
   .sns-area {
@@ -154,6 +163,11 @@
     .icon-line {
       color: #00b900;
       background: #fff;
+    }
+  }
+  &.animeVer {
+    .adsTOP1 {
+      margin: 4rem 0 0 0;
     }
   }
 }

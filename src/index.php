@@ -46,8 +46,8 @@
                                                         <span class="js-t8 line4 pc">
                                                             <?php echo wp_trim_words(get_the_content(), 150, '…' ); ?>
                                                         </span>
-                                                        <span class="js-t8 line2 sp">
-                                                            <?php echo wp_trim_words(get_the_content(), 100, '…' ); ?>
+                                                        <span class="js-t8 line3 sp">
+                                                            <?php echo wp_trim_words(get_the_content(), 150, '…' ); ?>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -83,6 +83,46 @@
                     <div class="Contents-wrap">
                         <div class="Contents-padding">
                             <div class="pc-flex bet break">
+                                <div class="article TOPver">
+                                    <a href="https://px.a8.net/svt/ejp?a8mat=3H3MA6+CS83EA+50+2HP601" rel="nofollow">
+                                        <div class="article-down">
+                                            <div class="article__imgClass">
+                                                <img border="0" width="336" height="280" alt="" src="https://www27.a8.net/svt/bgt?aid=210120846773&wid=001&eno=01&mid=s00000000018015066000&mc=1">
+                                            </div>
+                                            <div class="article__txtClass">
+                                                <span class="js-t8 line2">
+                                                    ブログを始めるなら、まずはドメインの取得から!!
+                                                </span>
+                                            </div>
+                                            <div class="article__miniTxt">
+                                                <span class="js-t8 line2">
+                                                    ドメイン登録料金が国内最安値!!ドメインは早い者勝ち!!お好きなドメインを取得しましょう!!
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=3H3MA6+CS83EA+50+2HP601" alt="">
+                                </div>
+                                <div class="article TOPver pc">
+                                    <a href="https://px.a8.net/svt/ejp?a8mat=3H3MA6+CR186Q+0K+118NW1" rel="nofollow">
+                                        <div class="article-down">
+                                            <div class="article__imgClass">
+                                                <img border="0" width="336" height="280" alt="" src="https://www27.a8.net/svt/bgt?aid=210120846771&wid=001&eno=01&mid=s00000000002006255000&mc=1">
+                                            </div>
+                                            <div class="article__txtClass">
+                                                <span class="js-t8 line2">
+                                                    審査なしアフィリエイトで収入を得るならA8.net！(登録無料)
+                                                </span>
+                                            </div>
+                                            <div class="article__miniTxt">
+                                                <span class="js-t8 line2">
+                                                    広告主・登録サイト数が日本最大級のアフィリエイトを始めてみませんか？
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=3H3MA6+CR186Q+0K+118NW1" alt="">
+                                </div>
                                 <?php
     $index_query = array(  //クエリー初期設定
         'post_type' => 'post',          //投稿タイプ
@@ -122,14 +162,26 @@
                                     <div class="sorryTxt">申し訳ありません。
                                         <br>ご希望の記事が見つかりませんでした。</div>
                                     <?php  } ?>
-                            </div>
-                            <div class="adsClass ta-center">
-                                <iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=293&l=ur1&category=primevideo&banner=1JAAQZZG8E813PGD5282&f=ifr&linkID=e76f7ce6cc47dbf88552988c0f8577d7&t=makoblog046-22&tracking_id=makoblog046-22"
-                                    width="640" height="100" class="pc" scrolling="no" border="0" marginwidth="0" style="border:none;"
-                                    frameborder="0"></iframe>
-                                <iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=12&l=ur1&category=primevideo&banner=18NKS0GQCSFJGQWKBJ02&f=ifr&linkID=3a1623cc7485d780ff52e0a9aa91202c&t=makoblog046-22&tracking_id=makoblog046-22"
-                                    width="300" height="250" class="sp" scrolling="no" border="0" marginwidth="0" style="border:none;"
-                                    frameborder="0"></iframe>
+                                    <div class="article sp">
+                                        <a href="https://px.a8.net/svt/ejp?a8mat=3H3MA6+CR186Q+0K+118NW1" rel="nofollow">
+                                            <div class="article-down">
+                                                <div class="article__imgClass">
+                                                    <img border="0" width="336" height="280" alt="" src="https://www27.a8.net/svt/bgt?aid=210120846771&wid=001&eno=01&mid=s00000000002006255000&mc=1">
+                                                </div>
+                                                <div class="article__txtClass">
+                                                    <span class="js-t8 line2">
+                                                        審査なしアフィリエイトで収入を得るならA8.net！(登録無料)
+                                                    </span>
+                                                </div>
+                                                <div class="article__miniTxt">
+                                                    <span class="js-t8 line2">
+                                                        広告主・登録サイト数が日本最大級のアフィリエイトを始めてみませんか？
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=3H3MA6+CR186Q+0K+118NW1" alt="">
+                                    </div>
                             </div>
                             <?php
 /*
@@ -149,11 +201,11 @@
                         'current_format' => '<span class="active flex vcenter hcenter minib">%d</span>',  //カレントボタンのレイアウト
                         'prev_next' => false, //戻る/進むボタン
                         'edge_pn' => false, //ページ末端側の戻る/進むボタンを表示するか
-                        'prev_label' => '≪前へ', //戻るボタンテキスト
-                        'next_label' => '次へ≫', //進むボタンテキスト
+                        'prev_label' => '≪', //戻るボタンテキスト
+                        'next_label' => '≫', //進むボタンテキスト
                         'first_last' => false, //最初/最後ボタン
                         'first_last_no' => true, //最初/最後ナンバー
-                        'edge_fl' => false, //ページ末端側の最初/最後ボタンを表示するか
+                        'edge_fl' => true, //ページ末端側の最初/最後ボタンを表示するか
                         'first_label' => '<i class="icon icon-double-left" ></i>',  //最初ボタンテキスト
                         'last_label' => '<i class="icon icon-double-right"></i>',  //最後ボタンテキスト
                         'op_left' => '', //左側オプション　%d（現ページ）%d（総ページ）
